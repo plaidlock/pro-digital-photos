@@ -1,0 +1,19 @@
+= form_for @page do |f|
+  title:
+  %br
+  = f.text_field :title
+  %br
+  description:
+  %br
+  = f.text_area :description
+  %br
+  keywords:
+  %br
+  = f.text_field :keywords
+  %br
+  content:
+  %br
+  = f.text_area :content
+  %br
+  = f.hidden_field :parent_id
+  = f.submit 'Create Page'
