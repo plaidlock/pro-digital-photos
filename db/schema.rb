@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(:version => 20110716034599) do
 
   create_table "pages", :force => true do |t|
+    t.boolean  "right_nav"
     t.string   "slug"
     t.string   "title"
     t.text     "description"

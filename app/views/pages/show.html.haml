@@ -2,5 +2,7 @@
 = link_to "[Create page within #{@page.title}]", new_page_path(:parent_id => @page.id)
 
 %h1= @page.title
-= navigation(@page.children)
-= @page.content
+
+.left= sidebar_navigation(@page.subtree.arrange)
+.right= @page.content
+.clear

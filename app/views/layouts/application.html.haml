@@ -9,10 +9,7 @@
   %body
     #header
       #logo
-      %ul#main-nav
-        %li= link_to 'prints', '#prints'
-        %li= link_to 'cookie', '#cookie'
-        %li= link_to '[+ new]', new_page_path
+      = render 'layouts/main_nav'
 
     #wrapper
       #inner-wrapper

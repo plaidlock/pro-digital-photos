@@ -4,6 +4,16 @@ class Page < ActiveRecord::Base
   
   before_validation :generate_slug
   
+  class << self
+    def right_nav
+      where(['pages.right_nav = ?', true])
+    end
+    
+    def left_nav
+      where(['pages.right_nav = ?', false])
+    end
+  end
+  
   def to_param
     slug
   end

@@ -1,4 +1,10 @@
 = form_for @page do |f|
+  - if !params[:parent_id]
+    show in right nav:
+    %br
+    = f.check_box :right_nav
+    %br
+
   title:
   %br
   = f.text_field :title

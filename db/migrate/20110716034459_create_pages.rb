@@ -1,6 +1,7 @@
 class CreatePages < ActiveRecord::Migration
   def self.up
     create_table :pages do |t|
+      t.boolean :right_nav
       t.string :slug
       t.string :title
       t.text :description

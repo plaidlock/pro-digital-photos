@@ -35,10 +35,10 @@ body {
   ul#main-nav {
     height: 30px;
     line-height: 27px;
-    padding: 0 0 0 10px;
+    width: 100%;
     
     li {
-      float: left;
+      padding: 0 10px;
       
       a {
         color: #ffffff;
@@ -49,15 +49,6 @@ body {
         
         &:hover {
           color: $light-blue;
-        }
-      }
-      
-      &:not(:last-child) {
-        a:after {
-          display: block;
-          content: '|';
-          font-weight: normal;
-          margin: 0 7px;
         }
       }
     }
@@ -81,7 +72,21 @@ body {
       @include corners(10px);
       margin: 0 auto;
       padding: 20px;
-      @include shadow(0 0 15px $light-blue/3); 
+      @include shadow(0 0 15px $light-blue/3);
+      
+      .left {
+        border: 1px solid #f0f;
+        width: 250px;
+      }
+      
+      .right {
+        border: 1px solid #ff0;
+        width: 600px;
+      }
+      
+      #sidebar_navigation {
+        background: #f0f;
+      }
     }
   }
 }
@@ -101,4 +106,23 @@ body {
 #footer, #footer-push {
   height: 35px;
   line-height: 43px;
+}
+
+//
+//
+// Help some stuff
+//
+//
+.clear {
+  clear: both;
+}
+
+.right {
+  float: right;
+  text-align: right;
+}
+
+.left {
+  float: left;
+  text-align: left;
 }

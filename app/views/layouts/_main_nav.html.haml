@@ -1,0 +1,7 @@
+%ul#main-nav
+  - Page.roots.left_nav.each do |page|
+    %li.left= link_to page.title, page
+  %li.left= link_to '[+ new]', new_page_path
+
+  - Page.roots.right_nav.each do |page|
+    %li.right= link_to page.title, page
