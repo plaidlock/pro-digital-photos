@@ -1,0 +1,8 @@
+.left
+  .box.green
+    .head
+    %ul#sidebar-navigation
+      = sidebar_navigation(@root_page.descendants.arrange)
+    .foot
+.right
+  = @page.content

@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'ancestry'
+gem 'compass'
 gem 'haml'
 gem 'jquery-rails'
 gem 'rails', '3.0.9'

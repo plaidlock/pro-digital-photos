@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   
   def show
     @page = Page.find_by_slug!(params[:slug])
+    @root_page = @page.root
   end
   
   def new
