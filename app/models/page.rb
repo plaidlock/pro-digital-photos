@@ -2,6 +2,9 @@ class Page < ActiveRecord::Base
   # setup ancestry
   has_ancestry
   
+  # associations
+  has_many :images, :as => :imageable
+  
   # we can act like wordpress and do some cool stuff too!
   before_validation :generate_slug, :generate_display_name, :generate_description, :generate_keywords, :generate_change_frequency, :generate_priority
   

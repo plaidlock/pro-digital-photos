@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110718030906) do
+ActiveRecord::Schema.define(:version => 20110718225833) do
+
+  create_table "images", :force => true do |t|
+    t.string   "title"
+    t.string   "alt"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pages", :force => true do |t|
     t.boolean  "right_nav",        :default => false
