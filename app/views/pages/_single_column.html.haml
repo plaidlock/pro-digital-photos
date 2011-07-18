@@ -1,1 +1,8 @@
+/ single column page
+
+%h1= @page.title
+
+- if logged_in? && current_user.is_admin?
+  = render 'admin_actions'
+  
 = @page.content

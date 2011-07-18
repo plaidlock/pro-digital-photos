@@ -7,15 +7,23 @@
 
   title:
   %br
-  = f.text_field :title
+  = f.text_field :title, :'data-tooltip' => 'Try to make this unique and memorable'
+  %br
+  display name:
+  %br
+  = f.text_field :display_name, :'data-tooltip' => 'The text to display on the link (defaults to title if blank)'
   %br
   description:
   %br
-  = f.text_area :description
+  = f.text_area :description, :'data-tooltip' => 'Write a 1-2 sentence description of the page'
   %br
-  keywords:
+  change frequency:
   %br
-  = f.text_field :keywords
+  = f.select :change_frequency, options_for_select(%w(always hourly daily weekly monthly yearly never), 'weekly'), {}, :'data-tooltip' => 'How often does this page change?'
+  %br
+  priority:
+  %br
+  = f.select :priority, options_for_select((0..10).to_a.collect{|i| i/10.0}, 0.5), {}, :'data-tooltip' => 'How important is this page?'
   %br
   content:
   %br

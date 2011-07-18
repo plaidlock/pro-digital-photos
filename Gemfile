@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'ancestry'
+gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'compass'
 gem 'haml'
 gem 'jquery-rails'

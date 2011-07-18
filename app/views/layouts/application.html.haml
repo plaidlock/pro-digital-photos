@@ -1,17 +1,21 @@
 !!!
 %html
   %head
-    %title ProDigitalPhotos
-    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    %title= title
+    %meta{:name => 'keywords', :content => keywords}
+    %meta{:name => 'description', :content => description}
+    = stylesheet_link_tag %w(screen tipsy), :media => 'screen, projection'
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
-    = javascript_include_tag :defaults
+    = javascript_include_tag %w(jquery jquery_ujs jquery-ui tipsy application)
     = csrf_meta_tag
     
   %body
+    / header
     #header
-      #logo
+      / logo
+      = link_to '', root_path, :id => 'logo'
       = render 'layouts/main_nav'
 
     #wrapper
@@ -20,8 +24,11 @@
           - flash.each do |flash_name, value|
             %div{:class => flash_name}!= value
           
+          / content
           = yield
+          / / content
       
     #footer_push
+    / footer
     #footer
       %span Copyright &copy; #{Time.now.strftime('%Y')} Pro Digital Photos, Inc

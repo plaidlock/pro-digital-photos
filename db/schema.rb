@@ -10,16 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110716034599) do
+ActiveRecord::Schema.define(:version => 20110718030906) do
 
   create_table "pages", :force => true do |t|
-    t.boolean  "right_nav",   :default => false
+    t.boolean  "right_nav",        :default => false
     t.string   "slug"
     t.string   "title"
-    t.string   "tooltip"
+    t.string   "display_name"
     t.text     "description"
     t.string   "keywords"
     t.text     "content"
+    t.string   "change_frequency"
+    t.float    "priority"
+    t.integer  "display_order",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"
@@ -27,5 +30,17 @@ ActiveRecord::Schema.define(:version => 20110716034599) do
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "password_hash"
+    t.string   "password_salt"
+    t.string   "name"
+    t.boolean  "is_admin",      :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["username"], :name => "index_users_on_username"
 
 end

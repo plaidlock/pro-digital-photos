@@ -207,8 +207,12 @@ body {
   height: 45px;
   margin-bottom: -20px;
 }
+/* line 125, ../../app/stylesheets/screen.scss */
+#wrapper #inner-wrapper #content #admin-actions {
+  font-size: 12px;
+}
 
-/* line 135, ../../app/stylesheets/screen.scss */
+/* line 139, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a {
   background: #e4f2c2;
   border-bottom: 1px solid #c6e38b;
@@ -218,39 +222,39 @@ ul#sidebar-navigation li a {
   padding: 5px 0 5px 15px;
   text-decoration: none;
 }
-/* line 144, ../../app/stylesheets/screen.scss */
+/* line 148, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a:hover, ul#sidebar-navigation li a.active {
   color: #000000;
 }
-/* line 148, ../../app/stylesheets/screen.scss */
+/* line 152, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a.with-arrow {
   background-image: url("/images/arrow-right.png");
   background-repeat: no-repeat;
   background-position: left;
 }
-/* line 154, ../../app/stylesheets/screen.scss */
+/* line 158, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a.with-arrow.active {
   background-image: url("/images/arrow-down.png");
 }
-/* line 160, ../../app/stylesheets/screen.scss */
+/* line 164, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul {
   display: none;
 }
-/* line 164, ../../app/stylesheets/screen.scss */
+/* line 168, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul li a {
   background: #edf7da;
   padding-left: 20px;
 }
-/* line 168, ../../app/stylesheets/screen.scss */
+/* line 172, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul li a.with-arrow {
   background-position: 5px;
 }
-/* line 173, ../../app/stylesheets/screen.scss */
+/* line 177, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul li ul li a {
   padding-left: 30px;
 }
 
-/* line 178, ../../app/stylesheets/screen.scss */
+/* line 182, ../../app/stylesheets/screen.scss */
 #footer {
   background: url("/images/footer.gif") repeat-x bottom;
   color: #ffffff;
@@ -258,30 +262,28 @@ ul#sidebar-navigation li ul li ul li a {
   text-align: right;
   width: 100%;
 }
-/* line 185, ../../app/stylesheets/screen.scss */
+/* line 189, ../../app/stylesheets/screen.scss */
 #footer span {
   margin: 0 10px 0 0;
 }
 
-/* line 190, ../../app/stylesheets/screen.scss */
+/* line 194, ../../app/stylesheets/screen.scss */
 #footer, #footer-push {
   height: 35px;
   line-height: 43px;
 }
 
-/* line 200, ../../app/stylesheets/screen.scss */
+/* line 204, ../../app/stylesheets/screen.scss */
 .clear {
   clear: both;
 }
 
-/* line 204, ../../app/stylesheets/screen.scss */
+/* line 208, ../../app/stylesheets/screen.scss */
 .right {
   float: right;
-  text-align: right;
 }
 
-/* line 209, ../../app/stylesheets/screen.scss */
+/* line 212, ../../app/stylesheets/screen.scss */
 .left {
   float: left;
-  text-align: left;
 }

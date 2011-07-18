@@ -1,0 +1,5 @@
+- if logged_in? && current_user.is_admin?
+  / admin actions
+  #admin-actions
+    = link_to '[Edit]', edit_page_path(:id => @page.id)
+    = link_to "[Create page within #{@page.title}]", new_page_path(:parent_id => @page.id)

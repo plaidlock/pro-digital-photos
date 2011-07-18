@@ -121,6 +121,10 @@ body {
           margin-bottom: -20px;
         }
       }
+    
+      #admin-actions {
+        font-size: 12px;
+      }
     }
   }
 }
@@ -203,10 +207,8 @@ ul#sidebar-navigation {
 
 .right {
   float: right;
-  text-align: right;
 }
 
 .left {
   float: left;
-  text-align: left;
 }

@@ -12,6 +12,10 @@ class PagesController < ApplicationController
     @page = Page.new(:parent_id => params[:parent_id])
   end
   
+  def edit
+    @page = Page.find(params[:id])
+  end
+  
   def create
     @page = Page.new(params[:page])
     

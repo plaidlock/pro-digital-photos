@@ -1,0 +1,5 @@
+!!! XML
+%sitemapindex{:xmlns => 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+  - @pages.each do |page|
+    %sitemap
+      %loc= sitemap_path(page, :format => :xml)

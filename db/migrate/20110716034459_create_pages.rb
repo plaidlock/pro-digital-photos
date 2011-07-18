@@ -4,10 +4,13 @@ class CreatePages < ActiveRecord::Migration
       t.boolean :right_nav, :default => false
       t.string :slug
       t.string :title
-      t.string :tooltip
+      t.string :display_name
       t.text :description
       t.string :keywords
       t.text :content
+      t.string :change_frequency
+      t.float :priority
+      t.integer :display_order, :default => 0
       
       t.timestamps
     end

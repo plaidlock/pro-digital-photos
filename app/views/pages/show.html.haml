@@ -1,12 +1,8 @@
-/= link_to '[Edit]', edit_page_path(@page)
-= link_to "[Create page within #{@page.title}]", new_page_path(:parent_id => @page.id)
-
-%h1= @page.title
-
 - if @root_page.descendants.empty?
   = render :partial => 'single_column'
 - else
   = render :partial => 'double_column'
+  
 .clear
 
 :javascript

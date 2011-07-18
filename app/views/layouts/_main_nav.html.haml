@@ -1,7 +1,13 @@
 %ul#main-nav
+  / left nav
   - Page.roots.left_nav.each do |page|
-    %li.left= link_to page.title, page
+    %li.left= link_to page.title, page_path(page)
   %li.left= link_to '[+ new]', new_page_path
 
+  / right nav
+  - if logged_in?
+    %li.right= link_to 'Logout', logout_path, :method => :delete
+  - else
+    %li.right= link_to 'Login', login_path
   - Page.roots.right_nav.each do |page|
-    %li.right= link_to page.title, page
+    %li.right= link_to page.title, page_path(page)

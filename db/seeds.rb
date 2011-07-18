@@ -1,24 +1,32 @@
-products = Page.create!(title:'Products')
-  prints_and_finishing = products.children.create!(title:'Prints & Finishing')
-    prints_and_finishing.children.create!(title:'Photographic Prints')
-    finishing_services = prints_and_finishing.children.create!(title:'Finishing Services')
-      finishing_services.children.create!(title:'Mounting')
-      finishing_services.children.create!(title:'Texture & Coating')
-    prints_and_finishing.children.create!(title:'Standout')
-    prints_and_finishing.children.create!(title:'Framed Prints')
+products = Page.new(title:'Products', content:'This is a page')
+  products.save!
+  prints_and_finishing = products.children.new(title:'Prints & Finishing', content:'This is a page')
+  prints_and_finishing.save!
+    prints_and_finishing.children.new(title:'Photographic Prints', content:'This is a page').save!
+    finishing_services = prints_and_finishing.children.new(title:'Finishing Services', content:'This is a page')
+    finishing_services.save!
+      finishing_services.children.new(title:'Mounting', content:'This is a page').save!
+      finishing_services.children.new(title:'Texture & Coating', content:'This is a page').save!
+    prints_and_finishing.children.new(title:'Standout', content:'This is a page').save!
+    prints_and_finishing.children.new(title:'Framed Prints', content:'This is a page').save!
   
-  press_printed = products.children.create!(title:'Press Printed Cards & Products')
-    press_printed.children.create!(title:'Boutique Cards')
-    press_printed.children.create!(title:'Greeting Cards')
-    press_printed.children.create!(title:'Postcards')
-    press_printed.children.create!(title:'Business Cards')
+  press_printed = products.children.new(title:'Press Printed Cards & Products', content:'This is a page')
+  press_printed.save!
+    press_printed.children.new(title:'Boutique Cards', content:'This is a page').save!
+    press_printed.children.new(title:'Greeting Cards', content:'This is a page').save!
+    press_printed.children.new(title:'Postcards', content:'This is a page').save!
+    press_printed.children.new(title:'Business Cards', content:'This is a page').save!
     
 
-about_us = Page.create!(title:'About Us')
-  about_us.children.create!(title:'Environmental Responsibility')
-  about_us.children.create!(title:'Company History')
-  about_us.children.create!(title:'Production Facilities')
-  about_us.children.create!(title:'Our Staff')
-  about_us.children.create!(title:'Customer Service')
+about_us = Page.new(title:'About Us', content:'This is a page')
+about_us.save!
+  about_us.children.new(title:'Environmental Responsibility', content:'This is a page').save!
+  about_us.children.new(title:'Company History', content:'This is a page').save!
+  about_us.children.new(title:'Production Facilities', content:'This is a page').save!
+  about_us.children.new(title:'Our Staff', content:'This is a page').save!
+  about_us.children.new(title:'Customer Service', content:'This is a page').save!
 
-pro = Page.create!(title:'Go Pro', right_nav:true)
+pro = Page.new(title:'Go Pro', content:'This is a page', right_nav:true).save!
+
+# Create some users
+cory = User.create!(username:'cory', password:'test', name:'Cory', is_admin:true)

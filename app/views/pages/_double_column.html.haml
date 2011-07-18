@@ -1,8 +1,14 @@
+/ double column page
 .left
   .box.green
     .head
     %ul#sidebar-navigation
-      = sidebar_navigation(@root_page.descendants.arrange)
+      = sidebar_navigation(@root_page.descendants.arrange(:order => :display_name))
     .foot
 .right
+  %h1= @page.title
+  
+  - if logged_in? && current_user.is_admin?
+    = render 'admin_actions'
+
   = @page.content

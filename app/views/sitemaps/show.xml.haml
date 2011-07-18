@@ -1,0 +1,8 @@
+!!! XML
+%urlset{:xmlns => 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+  - @pages.each do |page|
+    %url
+      %loc= page_path(page)
+      %lastmod= page.updated_at.utc.strftime('%Y-%m-%dT%H:%M:%S+00:00')
+      %changefreq= page.change_frequency
+      %priority= page.priority
