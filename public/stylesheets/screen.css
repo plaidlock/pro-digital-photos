@@ -154,14 +154,13 @@ body {
 }
 /* line 85, ../../app/stylesheets/screen.scss */
 #wrapper #inner-wrapper #content .right {
-  border: 1px solid #ff0;
   width: 600px;
 }
-/* line 90, ../../app/stylesheets/screen.scss */
+/* line 89, ../../app/stylesheets/screen.scss */
 #wrapper #inner-wrapper #content #sidebar_navigation {
   background: #f0f;
 }
-/* line 94, ../../app/stylesheets/screen.scss */
+/* line 93, ../../app/stylesheets/screen.scss */
 #wrapper #inner-wrapper #content .box {
   border: 2px solid #c6e38b;
   -moz-border-radius: 21px;
@@ -172,11 +171,11 @@ body {
   border-radius: 21px;
   padding: 0 0 20px 0;
 }
-/* line 99, ../../app/stylesheets/screen.scss */
+/* line 98, ../../app/stylesheets/screen.scss */
 #wrapper #inner-wrapper #content .box.green {
   background: #c6e38b;
 }
-/* line 103, ../../app/stylesheets/screen.scss */
+/* line 102, ../../app/stylesheets/screen.scss */
 #wrapper #inner-wrapper #content .box .head {
   background: #c6e38b url("/images/green-box-top.jpg") no-repeat left top;
   -moz-border-radius: 19px 19px 0px 0px;
@@ -190,12 +189,12 @@ body {
   padding: 10px 15px;
   text-align: center;
 }
-/* line 112, ../../app/stylesheets/screen.scss */
+/* line 111, ../../app/stylesheets/screen.scss */
 #wrapper #inner-wrapper #content .box .body {
   background: inherit;
   margin: 15px;
 }
-/* line 117, ../../app/stylesheets/screen.scss */
+/* line 116, ../../app/stylesheets/screen.scss */
 #wrapper #inner-wrapper #content .box .foot {
   background: #c6e38b url("/images/green-box-bottom.jpg") no-repeat right bottom;
   -moz-border-radius: 0px 0px 19px 19px;
@@ -207,12 +206,30 @@ body {
   height: 45px;
   margin-bottom: -20px;
 }
-/* line 125, ../../app/stylesheets/screen.scss */
+/* line 124, ../../app/stylesheets/screen.scss */
+#wrapper #inner-wrapper #content h1 {
+  border-right: 1px solid #cccccc;
+  color: #666666;
+  display: inline-block;
+  font-size: 24px;
+  height: 75px;
+  line-height: 50px;
+  width: 300px;
+}
+/* line 134, ../../app/stylesheets/screen.scss */
+#wrapper #inner-wrapper #content #page-description {
+  color: #999999;
+  float: right;
+  font-size: 12px;
+  padding: 9px;
+  width: 275px;
+}
+/* line 142, ../../app/stylesheets/screen.scss */
 #wrapper #inner-wrapper #content #admin-actions {
   font-size: 12px;
 }
 
-/* line 139, ../../app/stylesheets/screen.scss */
+/* line 156, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a {
   background: #e4f2c2;
   border-bottom: 1px solid #c6e38b;
@@ -222,39 +239,55 @@ ul#sidebar-navigation li a {
   padding: 5px 0 5px 15px;
   text-decoration: none;
 }
-/* line 148, ../../app/stylesheets/screen.scss */
+/* line 165, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a:hover, ul#sidebar-navigation li a.active {
   color: #000000;
 }
-/* line 152, ../../app/stylesheets/screen.scss */
+/* line 169, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a.with-arrow {
   background-image: url("/images/arrow-right.png");
   background-repeat: no-repeat;
   background-position: left;
 }
-/* line 158, ../../app/stylesheets/screen.scss */
+/* line 175, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a.with-arrow.active {
   background-image: url("/images/arrow-down.png");
 }
-/* line 164, ../../app/stylesheets/screen.scss */
+/* line 181, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul {
   display: none;
 }
-/* line 168, ../../app/stylesheets/screen.scss */
+/* line 185, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul li a {
   background: #edf7da;
   padding-left: 20px;
 }
-/* line 172, ../../app/stylesheets/screen.scss */
+/* line 189, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul li a.with-arrow {
   background-position: 5px;
 }
-/* line 177, ../../app/stylesheets/screen.scss */
+/* line 194, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul li ul li a {
   padding-left: 30px;
 }
 
-/* line 182, ../../app/stylesheets/screen.scss */
+/* line 199, ../../app/stylesheets/screen.scss */
+img, a img {
+  border: 0;
+}
+
+/* line 203, ../../app/stylesheets/screen.scss */
+img.photo {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  -moz-box-shadow: 1px 1px 5px #cccccc;
+  -webkit-box-shadow: 1px 1px 5px #cccccc;
+  -o-box-shadow: 1px 1px 5px #cccccc;
+  box-shadow: 1px 1px 5px #cccccc;
+  padding: 10px;
+}
+
+/* line 210, ../../app/stylesheets/screen.scss */
 #footer {
   background: url("/images/footer.gif") repeat-x bottom;
   color: #ffffff;
@@ -262,28 +295,28 @@ ul#sidebar-navigation li ul li ul li a {
   text-align: right;
   width: 100%;
 }
-/* line 189, ../../app/stylesheets/screen.scss */
+/* line 217, ../../app/stylesheets/screen.scss */
 #footer span {
   margin: 0 10px 0 0;
 }
 
-/* line 194, ../../app/stylesheets/screen.scss */
+/* line 222, ../../app/stylesheets/screen.scss */
 #footer, #footer-push {
   height: 35px;
   line-height: 43px;
 }
 
-/* line 204, ../../app/stylesheets/screen.scss */
+/* line 232, ../../app/stylesheets/screen.scss */
 .clear {
   clear: both;
 }
 
-/* line 208, ../../app/stylesheets/screen.scss */
-.right {
+/* line 236, ../../app/stylesheets/screen.scss */
+.float-right {
   float: right;
 }
 
-/* line 212, ../../app/stylesheets/screen.scss */
-.left {
+/* line 240, ../../app/stylesheets/screen.scss */
+.float-left {
   float: left;
 }

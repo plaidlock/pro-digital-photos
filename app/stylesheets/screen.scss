@@ -83,7 +83,6 @@ body {
       }
       
       .right {
-        border: 1px solid #ff0;
         width: 600px;
       }
       
@@ -120,6 +119,24 @@ body {
           height: 45px;
           margin-bottom: -20px;
         }
+      }
+    
+      h1 {
+        border-right: 1px solid #cccccc;
+        color: #666666;
+        display: inline-block;
+        font-size: 24px;
+        height: 75px;
+        line-height: 50px;
+        width: 300px;
+      }
+      
+      #page-description {
+        color: #999999;
+        float: right;
+        font-size: 12px;
+        padding: 9px;
+        width: 275px;
       }
     
       #admin-actions {
@@ -179,6 +196,17 @@ ul#sidebar-navigation {
   }
 }
 
+img,  a img {
+  border: 0;
+}
+
+img.photo {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  @include box-shadow(1px 1px 5px #cccccc);
+  padding: 10px;
+}
+
 #footer {
   background: url('/images/footer.gif') repeat-x bottom;
   color: #ffffff;
@@ -205,10 +233,10 @@ ul#sidebar-navigation {
   clear: both;
 }
 
-.right {
+.float-right {
   float: right;
 }
 
-.left {
+.float-left {
   float: left;
 }

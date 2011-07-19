@@ -1,14 +1,22 @@
 / double column page
-.left
+.left.float-left
   .box.green
     .head
     %ul#sidebar-navigation
-      = sidebar_navigation(@root_page.descendants.arrange(:order => :display_name))
+      = sidebar_navigation(@root_page.descendants.arrange(:order => :display_order))
     .foot
-.right
+.right.float-right
   %h1= @page.title
+  #page-description= @page.description
+  .clear
   
   - if logged_in? && current_user.is_admin?
     = render 'admin_actions'
 
   = @page.content
+
+:javascript
+  sidebarNavigation.create();
+  if(#{logged_in? && current_user.is_admin?}) {
+    sidebarNavigation.adminFunctions('#{sort_pages_path}');
+  }

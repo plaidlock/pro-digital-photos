@@ -5,7 +5,7 @@ module PageHelper
       string = link_to(page.title, page_path(page), :tooltip => page.title, :class => sub_pages.empty? ? nil : 'with-arrow', :'data-path' => page_path(page))
       string += content_tag(:ul, sidebar_navigation(sub_pages)) unless sub_pages.empty?
       
-      content_tag(:li, string)
+      content_tag(:li, string, :id => "page_#{page.id}")
     end.join.html_safe
   end
 end

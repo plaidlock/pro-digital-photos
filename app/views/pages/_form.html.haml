@@ -1,4 +1,4 @@
-= form_for @page do |f|
+= form_for @page, :html => {:multipart => true} do |f|
   - if !params[:parent_id]
     show in right nav:
     %br
@@ -30,4 +30,8 @@
   = f.text_area :content
   %br
   = f.hidden_field :parent_id
+  
+  
+    
+  %br
   = f.submit 'Create Page'

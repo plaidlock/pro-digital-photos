@@ -1,6 +1,7 @@
 / single column page
 
 %h1= @page.title
+= image_tag(@page.images.first.image.url, :class => 'photo float-right')
 
 - if logged_in? && current_user.is_admin?
   = render 'admin_actions'

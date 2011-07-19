@@ -4,6 +4,7 @@ class Page < ActiveRecord::Base
   
   # associations
   has_many :images, :as => :imageable
+  accepts_nested_attributes_for :images, :reject_if => proc{|attributes| attributes['image'].blank?}, :allow_destroy => true
   
   # we can act like wordpress and do some cool stuff too!
   before_validation :generate_slug, :generate_display_name, :generate_description, :generate_keywords, :generate_change_frequency, :generate_priority
@@ -22,10 +23,6 @@ class Page < ActiveRecord::Base
     def left_nav
       where(['pages.right_nav = ?', false])
     end
-  end
-  
-  def to_param
-    self.slug
   end
   
   private
