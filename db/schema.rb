@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110718030906) do
+ActiveRecord::Schema.define(:version => 20110719034259) do
 
   create_table "pages", :force => true do |t|
     t.boolean  "right_nav",        :default => false
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20110718030906) do
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
+
+  create_table "photos", :force => true do |t|
+    t.string   "alt"
+    t.string   "image"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"

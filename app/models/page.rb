@@ -3,8 +3,8 @@ class Page < ActiveRecord::Base
   has_ancestry
   
   # associations
-  has_many :images, :as => :imageable
-  accepts_nested_attributes_for :images, :reject_if => proc{|attributes| attributes['image'].blank?}, :allow_destroy => true
+  has_many :photos, :as => :attachable
+  accepts_nested_attributes_for :photos, :reject_if => proc{|attributes| attributes['image'].blank?}
   
   # we can act like wordpress and do some cool stuff too!
   before_validation :generate_slug, :generate_display_name, :generate_description, :generate_keywords, :generate_change_frequency, :generate_priority

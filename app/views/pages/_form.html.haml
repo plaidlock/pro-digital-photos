@@ -31,6 +31,18 @@
   %br
   = f.hidden_field :parent_id
   
+  = f.fields_for :photos do |ff|
+    %br
+    alt:
+    %br
+    = ff.text_field :alt
+    %br
+    image:
+    %br
+    = image_tag(ff.object.image_url) if ff.object.image?
+    = ff.file_field :image
+    = ff.hidden_field :image_cache
+    
   
     
   %br

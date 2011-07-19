@@ -19,6 +19,10 @@ body {
   font-family: verdana;
 }
 
+* {
+  outline: 0;
+}
+
 #header {
   background: url('/images/top-bar.gif') repeat-x top;
   display: block;

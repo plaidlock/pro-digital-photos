@@ -20,7 +20,7 @@ class PagesController < ApplicationController
   
   def new
     @page = Page.new(:parent_id => params[:parent_id])
-    3.times { @page.images.build }
+    3.times { @page.photos.build }
   end
   
   def create
@@ -36,7 +36,7 @@ class PagesController < ApplicationController
   
   def edit
     @page = Page.find(params[:id])
-    3.times { @page.images.build }
+    (3-@page.photos.size).times { @page.photos.build }
   end
   
   def update
