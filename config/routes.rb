@@ -1,6 +1,7 @@
 ProDigitalPhotos::Application.routes.draw do
   resources :pages do
     get 'sort', :on => :collection, :as => :sort
+    resources :photos
   end
   
   # login

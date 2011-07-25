@@ -152,6 +152,29 @@ body {
 
 //
 //
+// Breadcrumb Navigation
+//
+//
+#breadcrumbs {
+  margin: 0 0 15px 0;
+  font-size: 12px;
+  
+  a {
+    color: $dark-green;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  *:last-child {
+    color: #aaaaaa;
+  }
+}
+
+//
+//
 // Sidebar Navigation
 //
 //

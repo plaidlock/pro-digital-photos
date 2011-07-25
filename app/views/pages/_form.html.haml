@@ -33,16 +33,17 @@
   
   = f.fields_for :photos do |ff|
     %br
-    alt:
-    %br
-    = ff.text_field :alt
-    %br
     image:
     %br
-    = image_tag(ff.object.image_url) if ff.object.image?
-    = ff.file_field :image
-    = ff.hidden_field :image_cache
-    
+    - if ff.object.image?
+      = image_tag(ff.object.image.thumb.url)
+      = ff.check_box :remove_image
+    - else
+      = ff.file_field :image
+      = ff.hidden_field :image_cache
+    %br
+    alt:
+    = ff.text_field :alt
   
     
   %br

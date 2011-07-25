@@ -234,7 +234,26 @@ body {
   font-size: 12px;
 }
 
-/* line 160, ../../app/stylesheets/screen.scss */
+/* line 158, ../../app/stylesheets/screen.scss */
+#breadcrumbs {
+  margin: 0 0 15px 0;
+  font-size: 12px;
+}
+/* line 162, ../../app/stylesheets/screen.scss */
+#breadcrumbs a {
+  color: #637145;
+  text-decoration: none;
+}
+/* line 166, ../../app/stylesheets/screen.scss */
+#breadcrumbs a:hover {
+  text-decoration: underline;
+}
+/* line 171, ../../app/stylesheets/screen.scss */
+#breadcrumbs *:last-child {
+  color: #aaaaaa;
+}
+
+/* line 183, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a {
   background: #e4f2c2;
   border-bottom: 1px solid #c6e38b;
@@ -244,44 +263,44 @@ ul#sidebar-navigation li a {
   padding: 5px 0 5px 15px;
   text-decoration: none;
 }
-/* line 169, ../../app/stylesheets/screen.scss */
+/* line 192, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a:hover, ul#sidebar-navigation li a.active {
   color: #000000;
 }
-/* line 173, ../../app/stylesheets/screen.scss */
+/* line 196, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a.with-arrow {
   background-image: url("/images/arrow-right.png");
   background-repeat: no-repeat;
   background-position: left;
 }
-/* line 179, ../../app/stylesheets/screen.scss */
+/* line 202, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li a.with-arrow.active {
   background-image: url("/images/arrow-down.png");
 }
-/* line 185, ../../app/stylesheets/screen.scss */
+/* line 208, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul {
   display: none;
 }
-/* line 189, ../../app/stylesheets/screen.scss */
+/* line 212, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul li a {
   background: #edf7da;
   padding-left: 20px;
 }
-/* line 193, ../../app/stylesheets/screen.scss */
+/* line 216, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul li a.with-arrow {
   background-position: 5px;
 }
-/* line 198, ../../app/stylesheets/screen.scss */
+/* line 221, ../../app/stylesheets/screen.scss */
 ul#sidebar-navigation li ul li ul li a {
   padding-left: 30px;
 }
 
-/* line 203, ../../app/stylesheets/screen.scss */
+/* line 226, ../../app/stylesheets/screen.scss */
 img, a img {
   border: 0;
 }
 
-/* line 207, ../../app/stylesheets/screen.scss */
+/* line 230, ../../app/stylesheets/screen.scss */
 img.photo {
   background: #ffffff;
   border: 1px solid #cccccc;
@@ -292,7 +311,7 @@ img.photo {
   padding: 10px;
 }
 
-/* line 214, ../../app/stylesheets/screen.scss */
+/* line 237, ../../app/stylesheets/screen.scss */
 #footer {
   background: url("/images/footer.gif") repeat-x bottom;
   color: #ffffff;
@@ -300,28 +319,28 @@ img.photo {
   text-align: right;
   width: 100%;
 }
-/* line 221, ../../app/stylesheets/screen.scss */
+/* line 244, ../../app/stylesheets/screen.scss */
 #footer span {
   margin: 0 10px 0 0;
 }
 
-/* line 226, ../../app/stylesheets/screen.scss */
+/* line 249, ../../app/stylesheets/screen.scss */
 #footer, #footer-push {
   height: 35px;
   line-height: 43px;
 }
 
-/* line 236, ../../app/stylesheets/screen.scss */
+/* line 259, ../../app/stylesheets/screen.scss */
 .clear {
   clear: both;
 }
 
-/* line 240, ../../app/stylesheets/screen.scss */
+/* line 263, ../../app/stylesheets/screen.scss */
 .float-right {
   float: right;
 }
 
-/* line 244, ../../app/stylesheets/screen.scss */
+/* line 267, ../../app/stylesheets/screen.scss */
 .float-left {
   float: left;
 }

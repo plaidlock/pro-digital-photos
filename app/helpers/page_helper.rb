@@ -8,4 +8,12 @@ module PageHelper
       content_tag(:li, string, :id => "page_#{page.id}")
     end.join.html_safe
   end
+  
+  def breadcrumbs(current_page)
+    content_tag :div, :id => 'breadcrumbs' do
+      (current_page.ancestors << current_page).collect do |page|
+        link_to(page.title, page_path(page), :tooltip => page.title)
+      end.join(' &raquo; ').html_safe
+    end
+  end
 end
