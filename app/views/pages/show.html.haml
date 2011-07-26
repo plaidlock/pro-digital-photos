@@ -6,3 +6,6 @@
   = render :partial => 'double_column'
   
 .clear
+
+- if logged_in? && current_user.is_admin?
+  = render 'admin_actions'

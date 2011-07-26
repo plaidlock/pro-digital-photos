@@ -9,11 +9,8 @@
   %h1= @page.title
   #page-description= @page.description
   .clear
-  
-  - if logged_in? && current_user.is_admin?
-    = render 'admin_actions'
 
-  = @page.content
+  = @page.content.html_safe
 
 :javascript
   sidebarNavigation.create();

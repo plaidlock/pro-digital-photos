@@ -7,6 +7,7 @@ $dark-green: #637145;
 $green: #c6e38b;
 $light-green: #e4f2c2;
 $light-light-green: #edf7da;
+$yellow: #f3ee6c;
 
 html, body {
   height: 100%;
@@ -16,7 +17,10 @@ html, body {
 
 body {
   background: $light-blue;
+  color: #4e4e4e;
   font-family: verdana;
+  font-size: 12px;
+  line-height: 15px;
 }
 
 * {
@@ -42,7 +46,7 @@ body {
   
   ul#main-nav {
     height: 30px;
-    line-height: 27px;
+    line-height: 30px;
     width: 100%;
     
     li {
@@ -90,61 +94,101 @@ body {
         width: 600px;
       }
       
-      #sidebar_navigation {
-        background: #f0f;
-      }
-      
       .box {
-        border: 2px solid $green;
+        background: #ffffff;
         @include border-radius(21px);
         padding: 0 0 20px 0;
+        margin: 0 0 15px 0;
+        
+        ul.bullets {
+          margin: 0 20px 0 20px;
+        }
+        
+        &.yellow {
+          border: 2px solid $yellow;
+          
+          .head {
+            background: $yellow url('/images/yellow-box-top.jpg') no-repeat left top;
+            @include border-radius(19px 19px 0px 0px);
+            color: #4e4e4e;
+            font-size: 18px;
+            height: 20px;
+            padding: 10px 15px;
+            text-align: center;
+          }
+
+          .body {
+            margin: 15px 15px 0 15px;
+          }
+        }
         
         &.green {
-          background: $green;
-        }
-        
-        .head {
-          background: $green url('/images/green-box-top.jpg') no-repeat left top;
-          @include border-radius(19px 19px 0px 0px);
-          color: #4e4e4e;
-          height: 20px;
-          padding: 10px 15px;
-          text-align: center;
-        }
-        
-        .body {
-          background: inherit;
-          margin: 15px;
-        }
-        
-        .foot {
-          background: $green url('/images/green-box-bottom.jpg') no-repeat right bottom;
-          @include border-radius(0px 0px 19px 19px);
-          height: 45px;
-          margin-bottom: -20px;
+          border: 2px solid $green;
+          
+          .head {
+            background: $green url('/images/green-box-top.jpg') no-repeat left top;
+            @include border-radius(19px 19px 0px 0px);
+            color: #4e4e4e;
+            font-size: 18px;
+            height: 20px;
+            padding: 10px 15px;
+            text-align: center;
+          }
+
+          .body {
+            margin: 15px;
+          }
+
+          .foot {
+            background: $green url('/images/green-box-bottom.jpg') no-repeat right bottom;
+            @include border-radius(0px 0px 19px 19px);
+            height: 45px;
+            margin-bottom: -20px;
+          }
         }
       }
     
+      ul.bullets {
+        li {
+          list-style-type: disc;
+          margin: 0 0 15px 0;
+        }
+      }
+      
       h1 {
-        border-right: 1px solid #cccccc;
         color: #666666;
         display: inline-block;
+        float: left;
         font-size: 24px;
-        height: 75px;
-        line-height: 50px;
-        width: 300px;
+        line-height: 26px;
+        margin: 0 0 25px 0;
+        width: 60%;
       }
       
       #page-description {
+        border-left: 1px solid #cccccc;
         color: #999999;
         float: right;
         font-size: 12px;
-        padding: 9px;
-        width: 275px;
+        margin: 0 0 25px 0;
+        min-height: 50px;
+        padding: 0 1%;
+        width: 37%;
       }
     
       #admin-actions {
-        font-size: 12px;
+        margin: 10px 0 0 0;
+        text-align: right;
+        
+        a {
+          color: $dark-green;
+          font-size: 12px;
+          text-decoration: none;
+          
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
   }
@@ -180,6 +224,8 @@ body {
 //
 ul#sidebar-navigation {
   li {
+    list-style-type: none;
+    
     a {
       background: $light-green;
       border-bottom: 1px solid $green;
@@ -223,6 +269,11 @@ ul#sidebar-navigation {
   }
 }
 
+//
+//
+// Images
+//
+//
 img,  a img {
   border: 0;
 }
@@ -233,6 +284,67 @@ img.photo {
   @include box-shadow(1px 1px 5px #cccccc);
   padding: 10px;
 }
+
+//
+//
+// Tables
+//
+//
+table {
+  tr {
+    td.center {
+      text-align: center;
+    }
+  }
+}
+
+table.padded {
+  tr {
+    td {
+      padding: 15px;
+    }
+  }
+}
+
+table.alternate {
+  tr:nth-child(odd) td {
+    background: #dddddd;
+  }
+  
+  tr:nth-child(even) td {
+    background: #eeeeee;
+  }
+}
+
+//
+//
+// Input Elements
+//
+//
+input[type=text], input[type=password], textarea {
+  border: 1px solid #aaaaaa;
+  padding: 10px;
+}
+
+a.button {
+  @include background-image(linear-gradient(#ffffff, #eeeeee));
+  border: 1px solid #999999;
+  color: #666666;
+  display: inline-block;
+  margin: 5px 0;
+  padding: 5px 7px;
+  text-decoration: none;
+  
+  &:hover {
+    @include background-image(linear-gradient(#ffffff, #f7f7f7));
+  }
+}
+
+//
+//
+// Footer
+//
+//
 
 #footer {
   background: url('/images/footer.gif') repeat-x bottom;
@@ -256,6 +368,14 @@ img.photo {
 // Help some stuff
 //
 //
+.none {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 .clear {
   clear: both;
 }

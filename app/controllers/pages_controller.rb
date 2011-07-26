@@ -20,14 +20,13 @@ class PagesController < ApplicationController
   
   def new
     @page = Page.new(:parent_id => params[:parent_id])
-    3.times { @page.photos.build }
   end
   
   def create
     @page = Page.new(params[:page])
     
     if @page.save
-      redirect_to :back, :notice => 'Page was successfully created!'
+      redirect_to page_path(@page), :notice => 'Page was successfully created!'
     else
       flash.now[:alert] = @page.errors.full_messages
       render :action => 'new'
@@ -36,7 +35,6 @@ class PagesController < ApplicationController
   
   def edit
     @page = Page.find(params[:id])
-    (3-@page.photos.size).times { @page.photos.build }
   end
   
   def update

@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20110719034259) do
     t.string   "change_frequency"
     t.float    "priority"
     t.integer  "display_order",    :default => 0
+    t.text     "dakis_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"

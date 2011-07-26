@@ -4,10 +4,10 @@ class Page < ActiveRecord::Base
   
   # associations
   has_many :photos, :as => :attachable
-  accepts_nested_attributes_for :photos, :reject_if => proc{|attributes| attributes['image'].blank?}
+  accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => proc{|attributes| attributes['image'].blank?}
   
   # we can act like wordpress and do some cool stuff too!
-  before_validation :generate_slug, :generate_display_name, :generate_description, :generate_keywords, :generate_change_frequency, :generate_priority
+  before_validation :generate_slug, :generate_description, :generate_display_name, :generate_keywords, :generate_change_frequency, :generate_priority
   
   # validations
   validates :slug, :title, :display_name, :content, :description, :keywords, :presence => true
@@ -32,11 +32,12 @@ class Page < ActiveRecord::Base
   end
   
   def generate_description
-    self.description ||= self.content.split(/\s/)[0..50].join(' ') unless self.content.blank?
+    self.description = self.content.gsub(/[^a-zA-Z0-9\s]/, '') if self.description.blank?
   end
   
   def generate_display_name
-    self.display_name ||= self.title
+    self.display_name = self.title if self.display_name.blank?
+    return true
   end
   
   def generate_keywords
@@ -48,13 +49,16 @@ class Page < ActiveRecord::Base
       freqs[word] += 1 unless word.blank? || COMMON_WORDS.include?(word)
     end
     self.keywords = freqs.sort_by{|k,v| v}.reverse![0..10].collect{|a| a.first}.join(', ')
+    return true
   end
   
   def generate_change_frequency
-    self.change_frequency ||= 'monthly'
+    self.change_frequency = 'monthly' if self.change_frequency.blank?
+    return true
   end
   
   def generate_priority
-    self.priority ||= '0.1'
+    self.priority ||= '0.1' if self.priority.blank?
+    return true
   end
 end

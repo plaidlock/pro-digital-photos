@@ -11,6 +11,7 @@ class CreatePages < ActiveRecord::Migration
       t.string :change_frequency
       t.float :priority
       t.integer :display_order, :default => 0
+      t.text :dakis_url
       
       t.timestamps
     end

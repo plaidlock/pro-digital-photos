@@ -1,7 +1,13 @@
 $(function() {
   $('*[data-tooltip]').tipsy({
     fade: true,
-    gravity: 'w',
+    gravity: function() {
+      var customGravity = this.getAttribute('data-gravity');
+      if(customGravity !== undefined && customGravity !== null) {
+        return customGravity;
+      }
+      return 'w';
+    },
     opacity: 0.8,
     title: 'data-tooltip'
   });
