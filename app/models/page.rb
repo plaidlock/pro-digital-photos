@@ -4,7 +4,7 @@ class Page < ActiveRecord::Base
   
   # associations
   has_many :photos, :as => :attachable
-  accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => proc{|attributes| attributes['image'].blank?}
+  accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => proc{|attributes| attributes['image'].blank? && attributes['alt'].blank?}
   
   # we can act like wordpress and do some cool stuff too!
   before_validation :generate_slug, :generate_description, :generate_display_name, :generate_keywords, :generate_change_frequency, :generate_priority
@@ -17,12 +17,24 @@ class Page < ActiveRecord::Base
   
   class << self
     def right_nav
-      where(['pages.right_nav = ?', true])
+      self.where(['pages.right_nav = ?', true])
     end
     
     def left_nav
-      where(['pages.right_nav = ?', false])
+      self.where(['pages.right_nav = ?', false])
     end
+    
+    def product_pages
+      self.where(['dakis_url IS NOT NULL'])
+    end
+  end
+  
+  def primary_photo
+    self.photos.first || self.photos.new # change this later
+  end
+  
+  def to_param
+    self.slug
   end
   
   private
@@ -32,7 +44,7 @@ class Page < ActiveRecord::Base
   end
   
   def generate_description
-    self.description = self.content.gsub(/[^a-zA-Z0-9\s]/, '') if self.description.blank?
+    self.description = self.content.gsub(/[^a-zA-Z0-9\s]/, '')[0..250] if self.description.blank?
   end
   
   def generate_display_name

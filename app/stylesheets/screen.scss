@@ -271,6 +271,43 @@ ul#sidebar-navigation {
 
 //
 //
+// Product Thumbnails
+//
+//
+.product-thumbnails {
+  background: $light-light-green;
+  border: 1px solid $green;
+  padding: 10px;
+  
+  .product-thumbnail {
+    float: left;
+    width: 33%;
+    
+    a.product-title {
+      color: $dark-green;
+      display: inline-block;
+      margin: 5px;
+      overflow: hidden;
+      text-decoration: none;
+      white-space: nowrap;
+      width: 95%;
+    }
+
+    .product-content {
+      margin: 7px;
+    }
+    
+    &:hover {
+      a.product-title {
+        color: #000000;
+      }
+    }
+  }
+  
+}
+
+//
+//
 // Images
 //
 //

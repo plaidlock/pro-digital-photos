@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  load_and_authorize_resource :page, :except => [:show]
+  
   def index
     # this will be the "home" page eventually
   end
@@ -13,28 +15,24 @@ class PagesController < ApplicationController
   end
   
   def show
-    #@page = Page.find_by_slug!(params[:slug])
-    @page = Page.find(params[:id])
+    @page = Page.find_by_slug!(params[:id])
     @root_page = @page.root
+    @product_pages = @page.children.product_pages
   end
   
   def new
-    @page = Page.new(:parent_id => params[:parent_id])
+    @page.parent_id = params[:parent_id]
   end
   
   def create
     @page = Page.new(params[:page])
     
     if @page.save
-      redirect_to page_path(@page), :notice => 'Page was successfully created!'
+      redirect_to slug_path(@page), :notice => 'Page was successfully created!'
     else
       flash.now[:alert] = @page.errors.full_messages
       render :action => 'new'
     end
-  end
-  
-  def edit
-    @page = Page.find(params[:id])
   end
   
   def update

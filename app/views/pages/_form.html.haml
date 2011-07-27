@@ -1,4 +1,4 @@
-= form_for @page, :html => {:multipart => true} do |f|
+= form_for @page, :url => pages_path, :html => {:multipart => true} do |f|
   %table.alternate.padded#page-table{:style => 'border:1px solid #999999; width: 600px; margin: 0 auto;'}
     %tr
       - if !@page.parent_id
@@ -69,15 +69,20 @@
           Image:
           %br
           - if ff.object.image?
-            /= image_tag(ff.object.image.thumb.url)
-            = ff.check_box :remove_image
+            .float-left
+              = image_tag(ff.object.image.tiny.url)
+              %br
+              %label
+                = ff.check_box :_destroy
+                remove?
+              = ff.hidden_field :id
           - else
             = ff.file_field :image
             = ff.hidden_field :image_cache
           = ff.text_field :alt, :placeholder => 'Alternate Text', :style => 'width: 305px'
-  
+
   = f.hidden_field :parent_id
-  = f.submit 'Create Page'
+  = f.submit
 
 :javascript
   $(function() {

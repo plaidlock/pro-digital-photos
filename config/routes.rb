@@ -1,7 +1,6 @@
 ProDigitalPhotos::Application.routes.draw do
-  resources :pages do
+  resources :pages, :except => [:show] do
     get 'sort', :on => :collection, :as => :sort
-    resources :photos
   end
   
   # login
@@ -13,7 +12,7 @@ ProDigitalPhotos::Application.routes.draw do
   resources :sitemaps, :only => [:show, :index]
 
   # match all our slugs
-  #get '*slug' => 'pages#show', :as => :page
+  get '*id' => 'pages#show', :as => :slug
   
   # temp
   root :to => redirect('/pages')

@@ -7,5 +7,5 @@
   
 .clear
 
-- if logged_in? && current_user.is_admin?
+- if can?(:manage, @page)
   = render 'admin_actions'

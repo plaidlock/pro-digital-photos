@@ -1,8 +1,10 @@
 %ul#main-nav
   / left nav
   - Page.roots.left_nav.each do |page|
-    %li.float-left= link_to page.title, page_path(page)
-  %li.float-left= link_to '[+ new]', new_page_path
+    %li.float-left= link_to page.display_name, slug_path(page), :title => page.display_name
+  
+  - if can?(:create, Page)
+    %li.float-left= link_to '[+ new]', new_page_path
 
   / right nav
   - if logged_in?
@@ -10,4 +12,4 @@
   - else
     %li.float-right= link_to 'Login', login_path
   - Page.roots.right_nav.each do |page|
-    %li.float-right= link_to page.title, page_path(page)
+    %li.float-right= link_to page.display_name, slug_path(page), :title => page.display_name

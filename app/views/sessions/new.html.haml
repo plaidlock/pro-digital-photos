@@ -1,12 +1,18 @@
 %h1 Login
 
+#page-description Please login to continue
+
 = form_tag login_path do
-  username:
-  %br
-  = text_field_tag :username
-  %br
-  password:
-  %br
-  = text_field_tag :password
-  %br
-  = submit_tag :login
+  %table.alternate.padded{:style => 'border:1px solid #999999; width: 600px; margin: 0 auto'}
+    %tr
+      %td
+        Username:
+        %br
+        = text_field_tag :username, params[:username], :placeholder => 'username', :style => 'width: 250px'
+    %tr
+      %td
+        Password:
+        %br
+        = text_field_tag :password, nil, :placeholder => 'password', :style => 'width: 250px'
+
+  = submit_tag 'Login'

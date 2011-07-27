@@ -1,4 +1,4 @@
-- if logged_in? && current_user.is_admin?
+- if can?(:manage, @page)
   / admin actions
   #admin-actions
     = link_to '[Edit]', edit_page_path(:id => @page.id)

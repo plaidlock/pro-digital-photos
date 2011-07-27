@@ -6,7 +6,7 @@ class SitemapsController < ApplicationController
   end
   
   def show
-    @root = Page.find_by_slug(params[:id])
+    @root = Page.find_by_slug!(params[:id])
     @pages = @root.descendants
   end
 end

@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'ancestry'
 gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'cancan'
 gem 'carrierwave'
 gem 'compass'
 gem 'haml'
