@@ -363,18 +363,57 @@ input[type=text], input[type=password], textarea {
   padding: 10px;
 }
 
-a.button {
+.button {
   @include background-image(linear-gradient(#ffffff, #eeeeee));
   border: 1px solid #999999;
   color: #666666;
+  cursor: pointer;
   display: inline-block;
+  font-size: 12px;
   margin: 5px 0;
   padding: 5px 7px;
+  text-align: center;
   text-decoration: none;
   
   &:hover {
     @include background-image(linear-gradient(#ffffff, #f7f7f7));
   }
+  
+  &.red {
+    @include background-image(linear-gradient(#ff0000, #ee0000));
+    border: 1px solid #990000;
+    color: #ffffff;
+    display: inline-block;
+    margin: 5px 0;
+    padding: 5px 7px;
+    text-decoration: none;
+    
+    &:hover {
+      @include background-image(linear-gradient(#ff0000, #f70000));
+    }
+  }
+}
+
+//
+//
+// Flash
+//
+//
+.flash {
+  margin: 0 0 10px 0;
+  padding: 10px;
+}
+
+.flash#notice {
+  border: 1px solid #979700;
+  background: #ffffd9;
+  color: #646400;
+}
+
+.flash#alert {
+  border: 1px solid #970000;
+  background: #ffd9d9;
+  color: #640000;
 }
 
 //

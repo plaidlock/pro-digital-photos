@@ -2,6 +2,11 @@
 #page-description
   Edit an existing product or page. Use the following form to easily manage all your pages easily and effectively.
 
+.clear
+
+%div{:style => 'margin: 0 auto; width: 604px'}
+  = link_to 'Delete this page', page_path(@page.id), :method => :delete, :confirm => "Are you sure you want to delete '#{@page.title}'? This action cannot be undone, and all sub-pages #{@page.descendants.collect{|p| p.display_name}.to_sentence} will be destroyed!", :class => 'button red', :style => 'display: block'
+
 = render 'form'
 
 #admin-actions

@@ -27,9 +27,11 @@ ActiveRecord::Schema.define(:version => 20110719034259) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"
+    t.integer  "ancestry_depth",   :default => 0
   end
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"
+  add_index "pages", ["ancestry_depth"], :name => "index_pages_on_ancestry_depth"
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
 
   create_table "photos", :force => true do |t|

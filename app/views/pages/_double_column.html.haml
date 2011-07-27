@@ -19,7 +19,13 @@
             = link_to slug_path(product), :title => product.display_name do
               = image_tag(product.primary_photo.image.thumb.url, :width => 160, :height => 90, :class => 'photo', :alt => product.display_name)
       .clear
-    .clear{:style => 'margin: 0 0 10px 0'}
+  - else
+    = image_tag(@page.primary_photo.image.url)
+    - @page.photos.each do |photo|
+      = link_to '#', :class => 'fancybox' do
+        = image_tag(photo.image.thumb.url, :width => 75, :height => 75, :alt => photo.alt || @page.display_name, :rel => "#{@page.slug}-gallery")
+
+  .clear{:style => 'margin: 0 0 10px 0'}
   = @page.content.html_safe
 
 :javascript

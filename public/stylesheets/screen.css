@@ -416,7 +416,7 @@ input[type=text], input[type=password], textarea {
 }
 
 /* line 366, ../../app/stylesheets/screen.scss */
-a.button {
+.button {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #eeeeee));
   background-image: -webkit-linear-gradient(#ffffff, #eeeeee);
   background-image: -moz-linear-gradient(#ffffff, #eeeeee);
@@ -425,13 +425,16 @@ a.button {
   background-image: linear-gradient(#ffffff, #eeeeee);
   border: 1px solid #999999;
   color: #666666;
+  cursor: pointer;
   display: inline-block;
+  font-size: 12px;
   margin: 5px 0;
   padding: 5px 7px;
+  text-align: center;
   text-decoration: none;
 }
-/* line 375, ../../app/stylesheets/screen.scss */
-a.button:hover {
+/* line 378, ../../app/stylesheets/screen.scss */
+.button:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #f7f7f7));
   background-image: -webkit-linear-gradient(#ffffff, #f7f7f7);
   background-image: -moz-linear-gradient(#ffffff, #f7f7f7);
@@ -439,8 +442,52 @@ a.button:hover {
   background-image: -ms-linear-gradient(#ffffff, #f7f7f7);
   background-image: linear-gradient(#ffffff, #f7f7f7);
 }
+/* line 382, ../../app/stylesheets/screen.scss */
+.button.red {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0000), color-stop(100%, #ee0000));
+  background-image: -webkit-linear-gradient(#ff0000, #ee0000);
+  background-image: -moz-linear-gradient(#ff0000, #ee0000);
+  background-image: -o-linear-gradient(#ff0000, #ee0000);
+  background-image: -ms-linear-gradient(#ff0000, #ee0000);
+  background-image: linear-gradient(#ff0000, #ee0000);
+  border: 1px solid #990000;
+  color: #ffffff;
+  display: inline-block;
+  margin: 5px 0;
+  padding: 5px 7px;
+  text-decoration: none;
+}
+/* line 391, ../../app/stylesheets/screen.scss */
+.button.red:hover {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0000), color-stop(100%, #f70000));
+  background-image: -webkit-linear-gradient(#ff0000, #f70000);
+  background-image: -moz-linear-gradient(#ff0000, #f70000);
+  background-image: -o-linear-gradient(#ff0000, #f70000);
+  background-image: -ms-linear-gradient(#ff0000, #f70000);
+  background-image: linear-gradient(#ff0000, #f70000);
+}
 
-/* line 386, ../../app/stylesheets/screen.scss */
+/* line 402, ../../app/stylesheets/screen.scss */
+.flash {
+  margin: 0 0 10px 0;
+  padding: 10px;
+}
+
+/* line 407, ../../app/stylesheets/screen.scss */
+.flash#notice {
+  border: 1px solid #979700;
+  background: #ffffd9;
+  color: #646400;
+}
+
+/* line 413, ../../app/stylesheets/screen.scss */
+.flash#alert {
+  border: 1px solid #970000;
+  background: #ffd9d9;
+  color: #640000;
+}
+
+/* line 425, ../../app/stylesheets/screen.scss */
 #footer {
   background: url("/images/footer.gif") repeat-x bottom;
   color: #ffffff;
@@ -448,38 +495,38 @@ a.button:hover {
   text-align: right;
   width: 100%;
 }
-/* line 393, ../../app/stylesheets/screen.scss */
+/* line 432, ../../app/stylesheets/screen.scss */
 #footer span {
   margin: 0 10px 0 0;
 }
 
-/* line 398, ../../app/stylesheets/screen.scss */
+/* line 437, ../../app/stylesheets/screen.scss */
 #footer, #footer-push {
   height: 35px;
   line-height: 43px;
 }
 
-/* line 408, ../../app/stylesheets/screen.scss */
+/* line 447, ../../app/stylesheets/screen.scss */
 .none {
   display: none;
 }
 
-/* line 412, ../../app/stylesheets/screen.scss */
+/* line 451, ../../app/stylesheets/screen.scss */
 .hidden {
   visibility: hidden;
 }
 
-/* line 416, ../../app/stylesheets/screen.scss */
+/* line 455, ../../app/stylesheets/screen.scss */
 .clear {
   clear: both;
 }
 
-/* line 420, ../../app/stylesheets/screen.scss */
+/* line 459, ../../app/stylesheets/screen.scss */
 .float-right {
   float: right;
 }
 
-/* line 424, ../../app/stylesheets/screen.scss */
+/* line 463, ../../app/stylesheets/screen.scss */
 .float-left {
   float: left;
 }

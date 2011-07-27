@@ -12,8 +12,17 @@ module PageHelper
   def breadcrumbs(current_page)
     content_tag :div, :id => 'breadcrumbs' do
       (current_page.ancestors << current_page).collect do |page|
-        link_to(page.display_name, slug_path(page), :title => page.display_name)
+        begin
+          link_to(page.display_name, slug_path(page), :title => page.display_name)
+        rescue
+          '[Here]'
+        end
       end.join(' &raquo; ').html_safe
     end
+  end
+  
+  def all_paths(current_page = nil)
+    return Page.roots.collect{|p| all_paths(p)} if current_page.nil?
+    current_page.children.collect{|p| all_paths(p)} 
   end
 end

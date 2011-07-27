@@ -1,5 +1,5 @@
-= form_for @page, :url => pages_path, :html => {:multipart => true} do |f|
-  %table.alternate.padded#page-table{:style => 'border:1px solid #999999; width: 600px; margin: 0 auto;'}
+= form_for @page, :url => params[:action] == 'edit' ? page_path(@page.id) : pages_path, :method => params[:action] == 'edit' ? :put : :post, :html => {:multipart => true} do |f|
+  %table.alternate.padded#page-table{:style => 'border: 1px solid #999999; width: 600px; margin: 0 auto;'}
     %tr
       - if !@page.parent_id
         %td.center
@@ -16,7 +16,9 @@
         %td.center
           This page will be created in:
           %br
-          = breadcrumbs(@page.parent)
+          = breadcrumbs(@page)
+          = link_to 'Change', nil, :id => 'change-path-button', :class => 'button'
+          = f.select :parent_id, options_for_select(Page.order(:slug).all.collect{|p| ["#{'&nbsp;-&nbsp;'*p.ancestry_depth} #{p.slug.split('/').last}".html_safe, p.id]}, @page.parent_id), {}, :style => 'display: none', :id => 'change-path-select'
     %tr
       %td
         Title:
@@ -75,32 +77,39 @@
               %label
                 = ff.check_box :_destroy
                 remove?
-              = ff.hidden_field :id
           - else
             = ff.file_field :image
             = ff.hidden_field :image_cache
           = ff.text_field :alt, :placeholder => 'Alternate Text', :style => 'width: 305px'
+          = ff.hidden_field :id
 
-  = f.hidden_field :parent_id
-  = f.submit
+  %div{:style => 'margin: 0 auto; width: 604px'}
+    = f.submit :class => 'button', :style => 'width: 604px'
 
 :javascript
   $(function() {
+    $('#change-path-button').click(function() {
+      $('#breadcrumbs').remove();
+      $(this).remove();
+      $('#change-path-select').show();
+      return false;
+    });
+
     $('.attach-product').click(function() {
       addProduct();
       return false;
     });
-    
+
     function addProduct() {
       $('.attach-product').parent().parent().remove();
       $('.attach-product-row').show();
     }
-    
+
     $('.add-product-photo').click(function() {
       addProductPhoto();
       return false;
     });
-    
+
     function addProductPhoto() {
       var num = new Date().getTime();
       var tbody = document.getElementById('page-table').children[0];
@@ -114,60 +123,60 @@
         altField.name = 'page[photos_attributes]['+num+'][alt]';
         altField.style.width = '305px';
         altField.placeholder = 'Alternative Text';
-      
+
       td.innerHTML = 'Image:<br />';
       td.appendChild(fileField);
       td.appendChild(altField);
-      
+
       tr.appendChild(td);
-      
+
       tbody.appendChild(tr);
     }
-  
-  
+
+
     // handle the mini-WYSIWYG
     var textarea = document.getElementById('page-content');
-    
+
     $('#insert-paragraph').click(function() {
       var text = '<p></p>\r\n';
-      
+
       insertAtCursor(text);
-      
+
       return false;
     });
-    
+
     $('#insert-green-box').click(function() {
       var text = '<div class="green box">\r\n\t<div class="head">[INSERT TITLE HERE]</div>\r\n\t<div class="body">\r\n\t\t[MAIN BOX CONTENT HERE]\r\n\t</div>\r\n\t<div class="footer"></div>\r\n</div>\r\n';
-      
+
       insertAtCursor(text);
-      
+
       return false;
     });
-    
+
     $('#insert-yellow-box').click(function() {
       var text = '<div class="yellow box">\r\n\t<div class="head">[INSERT TITLE HERE]</div>\r\n\t<div class="body">\r\n\t\t[MAIN BOX CONTENT HERE]\r\n\t</div>\r\n\t<div class="footer"></div>\r\n</div>\r\n';
-      
+
       insertAtCursor(text);
-      
+
       return false;
     });
-    
+
     $('#insert-ul').click(function() {
       var text = '<ul class="bullets">\r\n\t<li></li>\r\n</ul>\r\n';
-      
+
       insertAtCursor(text);
-      
+
       return false;
     });
-    
+
     $('#insert-a').click(function() {
       var text = '<a href="[LINK PATH HERE]">[LINK TEXT HERE]</a>\r\n';
-      
+
       insertAtCursor(text);
-      
+
       return false;
     });
-    
+
     function insertAtCursor(text) {
       if(document.selection) {
         textarea.focus();

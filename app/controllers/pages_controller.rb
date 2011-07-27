@@ -36,12 +36,19 @@ class PagesController < ApplicationController
   end
   
   def update
-    @page = Page.find(params[:id])
-    
     if @page.update_attributes(params[:page])
-      redirect_to edit_page_path(@page), :notice => 'Page was updated'
+      redirect_to edit_page_path(@page.id), :notice => 'Page was updated'
     else
       flash.now[:alert] = @page.errors.full_messages.join('<br />').html_safe
+      render :action => 'edit'
+    end
+  end
+  
+  def destroy
+    if @page.destroy
+      redirect_to pages_path, :notice => 'Page was destroyed!'
+    else
+      flash.now[:error] = @page.errors.full_messages.join('<br />').html_safe
       render :action => 'edit'
     end
   end

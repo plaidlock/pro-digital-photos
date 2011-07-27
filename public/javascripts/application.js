@@ -11,13 +11,15 @@ $(function() {
     opacity: 0.8,
     title: 'data-tooltip'
   });
+
+  $('.fancybox').fancybox();
 });
 
 var sidebarNavigation = {
   _toggle: function(link, animate) {
     // ensure we have a jQuery object
     var $link = $(link);
-    
+
     $link.toggleClass('active');
     if(animate === true) {
       $link.parent('li').children('ul').slideToggle('fast');
@@ -35,11 +37,11 @@ var sidebarNavigation = {
       if($subNav.size() !== 0) {
         $link.click(function(e) {
           sidebarNavigation._toggle(this, true);
-          return false; 
+          return false;
         });
-      }    
+      }
     });
-    
+
     // Now expand the proper path
     var path = window.location.pathname;
     var $currentLink = $('a[data-path="'+path+'"]');
@@ -56,7 +58,7 @@ var sidebarNavigation = {
         $.get(path+'?'+serializedData);
       }
     }
-    
+
     $('ul#sidebar-navigation, ul#sidebar-navigation * ul').sortable(sortableOpts);
   }
 }
