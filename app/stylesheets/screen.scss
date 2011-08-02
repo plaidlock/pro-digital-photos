@@ -32,7 +32,7 @@ body {
   display: block;
   height: 85px;
   padding: 50px 0 0 0;
-  
+
   #logo {
     background: url('/images/logo.gif') no-repeat;
     display: block;
@@ -43,22 +43,22 @@ body {
     top: 0;
     width: 163px;
   }
-  
+
   ul#main-nav {
     height: 30px;
     line-height: 30px;
     width: 100%;
-    
+
     li {
       padding: 0 10px;
-      
+
       a {
         color: #ffffff;
         font-size: 11px;
         font-weight: bold;
         text-decoration: none;
         text-transform: uppercase;
-        
+
         &:hover {
           color: $light-blue;
         }
@@ -70,14 +70,14 @@ body {
 #wrapper {
   width: 920px;
   top: 0;
-  
+
   min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	margin: -135px auto -35px auto; /* the bottom margin is the negative value of the footer's height */
-	
-	#inner-wrapper {
-	  padding: 150px 0 90px 0;
+  height: auto !important;
+  height: 100%;
+  margin: -135px auto -35px auto; /* the bottom margin is the negative value of the footer's height */
+
+  #inner-wrapper {
+    padding: 150px 0 90px 0;
 
     #content {
       background: #ffffff;
@@ -85,28 +85,28 @@ body {
       @include box-shadow(0 0 15px $light-blue/3);
       margin: 0 auto;
       padding: 20px;
-      
+
       .left {
         width: 250px;
       }
-      
+
       .right {
         width: 600px;
       }
-      
+
       .box {
         background: #ffffff;
         @include border-radius(21px);
         padding: 0 0 20px 0;
         margin: 0 0 15px 0;
-        
+
         ul.bullets {
           margin: 0 20px 0 20px;
         }
-        
+
         &.yellow {
           border: 2px solid $yellow;
-          
+
           .head {
             background: $yellow url('/images/yellow-box-top.jpg') no-repeat left top;
             @include border-radius(19px 19px 0px 0px);
@@ -121,10 +121,10 @@ body {
             margin: 15px 15px 0 15px;
           }
         }
-        
+
         &.green {
           border: 2px solid $green;
-          
+
           .head {
             background: $green url('/images/green-box-top.jpg') no-repeat left top;
             @include border-radius(19px 19px 0px 0px);
@@ -147,14 +147,14 @@ body {
           }
         }
       }
-    
+
       ul.bullets {
         li {
           list-style-type: disc;
           margin: 0 0 15px 0;
         }
       }
-      
+
       h1 {
         color: #666666;
         display: inline-block;
@@ -164,7 +164,7 @@ body {
         margin: 0 0 25px 0;
         width: 60%;
       }
-      
+
       #page-description {
         border-left: 1px solid #cccccc;
         color: #999999;
@@ -175,16 +175,16 @@ body {
         padding: 0 1%;
         width: 37%;
       }
-    
+
       #admin-actions {
         margin: 10px 0 0 0;
         text-align: right;
-        
+
         a {
           color: $dark-green;
           font-size: 12px;
           text-decoration: none;
-          
+
           &:hover {
             text-decoration: underline;
           }
@@ -202,16 +202,16 @@ body {
 #breadcrumbs {
   margin: 0 0 15px 0;
   font-size: 12px;
-  
+
   a {
     color: $dark-green;
     text-decoration: none;
-    
+
     &:hover {
       text-decoration: underline;
     }
   }
-  
+
   *:last-child {
     color: #aaaaaa;
   }
@@ -225,7 +225,7 @@ body {
 ul#sidebar-navigation {
   li {
     list-style-type: none;
-    
+
     a {
       background: $light-green;
       border-bottom: 1px solid $green;
@@ -234,17 +234,17 @@ ul#sidebar-navigation {
       font-size: 12px;
       padding: 5px 0 5px 15px;
       text-decoration: none;
-      
+
       &:hover, &.active {
         color: #000000;
       }
-      
+
       &.with-arrow {
         background-image: url('/images/arrow-right.png');
         background-repeat: no-repeat;
         background-position: left;
       }
-      
+
       &.with-arrow.active {
         background-image: url('/images/arrow-down.png');
       }
@@ -254,16 +254,16 @@ ul#sidebar-navigation {
   li ul {
     display: none;
   }
-  
+
   li ul li a {
     background: $light-light-green;
     padding-left: 20px;
-    
+
     &.with-arrow {
       background-position: 5px;
     }
   }
-  
+
   li ul li ul li a {
     padding-left: 30px;
   }
@@ -278,11 +278,11 @@ ul#sidebar-navigation {
   background: $light-light-green;
   border: 1px solid $green;
   padding: 10px;
-  
+
   .product-thumbnail {
     float: left;
     width: 33%;
-    
+
     a.product-title {
       color: $dark-green;
       display: inline-block;
@@ -296,14 +296,14 @@ ul#sidebar-navigation {
     .product-content {
       margin: 7px;
     }
-    
+
     &:hover {
       a.product-title {
         color: #000000;
       }
     }
   }
-  
+
 }
 
 //
@@ -313,6 +313,9 @@ ul#sidebar-navigation {
 //
 img,  a img {
   border: 0;
+  color: transparent;
+  outline: 0;
+  text-decoration: none;
 }
 
 img.photo {
@@ -347,7 +350,7 @@ table.alternate {
   tr:nth-child(odd) td {
     background: #dddddd;
   }
-  
+
   tr:nth-child(even) td {
     background: #eeeeee;
   }
@@ -374,11 +377,11 @@ input[type=text], input[type=password], textarea {
   padding: 5px 7px;
   text-align: center;
   text-decoration: none;
-  
+
   &:hover {
     @include background-image(linear-gradient(#ffffff, #f7f7f7));
   }
-  
+
   &.red {
     @include background-image(linear-gradient(#ff0000, #ee0000));
     border: 1px solid #990000;
@@ -387,7 +390,7 @@ input[type=text], input[type=password], textarea {
     margin: 5px 0;
     padding: 5px 7px;
     text-decoration: none;
-    
+
     &:hover {
       @include background-image(linear-gradient(#ff0000, #f70000));
     }
@@ -428,7 +431,7 @@ input[type=text], input[type=password], textarea {
   font-size: 10px;
   text-align: right;
   width: 100%;
-  
+
   span {
     margin: 0 10px 0 0;
   }

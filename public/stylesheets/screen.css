@@ -377,9 +377,12 @@ ul#sidebar-navigation li ul li ul li a {
 /* line 314, ../../app/stylesheets/screen.scss */
 img, a img {
   border: 0;
+  color: transparent;
+  outline: 0;
+  text-decoration: none;
 }
 
-/* line 318, ../../app/stylesheets/screen.scss */
+/* line 321, ../../app/stylesheets/screen.scss */
 img.photo {
   background: #ffffff;
   border: 1px solid #cccccc;
@@ -390,32 +393,32 @@ img.photo {
   padding: 10px;
 }
 
-/* line 332, ../../app/stylesheets/screen.scss */
+/* line 335, ../../app/stylesheets/screen.scss */
 table tr td.center {
   text-align: center;
 }
 
-/* line 340, ../../app/stylesheets/screen.scss */
+/* line 343, ../../app/stylesheets/screen.scss */
 table.padded tr td {
   padding: 15px;
 }
 
-/* line 347, ../../app/stylesheets/screen.scss */
+/* line 350, ../../app/stylesheets/screen.scss */
 table.alternate tr:nth-child(odd) td {
   background: #dddddd;
 }
-/* line 351, ../../app/stylesheets/screen.scss */
+/* line 354, ../../app/stylesheets/screen.scss */
 table.alternate tr:nth-child(even) td {
   background: #eeeeee;
 }
 
-/* line 361, ../../app/stylesheets/screen.scss */
+/* line 364, ../../app/stylesheets/screen.scss */
 input[type=text], input[type=password], textarea {
   border: 1px solid #aaaaaa;
   padding: 10px;
 }
 
-/* line 366, ../../app/stylesheets/screen.scss */
+/* line 369, ../../app/stylesheets/screen.scss */
 .button {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #eeeeee));
   background-image: -webkit-linear-gradient(#ffffff, #eeeeee);
@@ -433,7 +436,7 @@ input[type=text], input[type=password], textarea {
   text-align: center;
   text-decoration: none;
 }
-/* line 378, ../../app/stylesheets/screen.scss */
+/* line 381, ../../app/stylesheets/screen.scss */
 .button:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #f7f7f7));
   background-image: -webkit-linear-gradient(#ffffff, #f7f7f7);
@@ -442,7 +445,7 @@ input[type=text], input[type=password], textarea {
   background-image: -ms-linear-gradient(#ffffff, #f7f7f7);
   background-image: linear-gradient(#ffffff, #f7f7f7);
 }
-/* line 382, ../../app/stylesheets/screen.scss */
+/* line 385, ../../app/stylesheets/screen.scss */
 .button.red {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0000), color-stop(100%, #ee0000));
   background-image: -webkit-linear-gradient(#ff0000, #ee0000);
@@ -457,7 +460,7 @@ input[type=text], input[type=password], textarea {
   padding: 5px 7px;
   text-decoration: none;
 }
-/* line 391, ../../app/stylesheets/screen.scss */
+/* line 394, ../../app/stylesheets/screen.scss */
 .button.red:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0000), color-stop(100%, #f70000));
   background-image: -webkit-linear-gradient(#ff0000, #f70000);
@@ -467,27 +470,27 @@ input[type=text], input[type=password], textarea {
   background-image: linear-gradient(#ff0000, #f70000);
 }
 
-/* line 402, ../../app/stylesheets/screen.scss */
+/* line 405, ../../app/stylesheets/screen.scss */
 .flash {
   margin: 0 0 10px 0;
   padding: 10px;
 }
 
-/* line 407, ../../app/stylesheets/screen.scss */
+/* line 410, ../../app/stylesheets/screen.scss */
 .flash#notice {
   border: 1px solid #979700;
   background: #ffffd9;
   color: #646400;
 }
 
-/* line 413, ../../app/stylesheets/screen.scss */
+/* line 416, ../../app/stylesheets/screen.scss */
 .flash#alert {
   border: 1px solid #970000;
   background: #ffd9d9;
   color: #640000;
 }
 
-/* line 425, ../../app/stylesheets/screen.scss */
+/* line 428, ../../app/stylesheets/screen.scss */
 #footer {
   background: url("/images/footer.gif") repeat-x bottom;
   color: #ffffff;
@@ -495,38 +498,38 @@ input[type=text], input[type=password], textarea {
   text-align: right;
   width: 100%;
 }
-/* line 432, ../../app/stylesheets/screen.scss */
+/* line 435, ../../app/stylesheets/screen.scss */
 #footer span {
   margin: 0 10px 0 0;
 }
 
-/* line 437, ../../app/stylesheets/screen.scss */
+/* line 440, ../../app/stylesheets/screen.scss */
 #footer, #footer-push {
   height: 35px;
   line-height: 43px;
 }
 
-/* line 447, ../../app/stylesheets/screen.scss */
+/* line 450, ../../app/stylesheets/screen.scss */
 .none {
   display: none;
 }
 
-/* line 451, ../../app/stylesheets/screen.scss */
+/* line 454, ../../app/stylesheets/screen.scss */
 .hidden {
   visibility: hidden;
 }
 
-/* line 455, ../../app/stylesheets/screen.scss */
+/* line 458, ../../app/stylesheets/screen.scss */
 .clear {
   clear: both;
 }
 
-/* line 459, ../../app/stylesheets/screen.scss */
+/* line 462, ../../app/stylesheets/screen.scss */
 .float-right {
   float: right;
 }
 
-/* line 463, ../../app/stylesheets/screen.scss */
+/* line 466, ../../app/stylesheets/screen.scss */
 .float-left {
   float: left;
 }

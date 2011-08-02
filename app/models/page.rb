@@ -30,7 +30,7 @@ class Page < ActiveRecord::Base
   end
 
   def primary_photo
-    self.photos.first
+    self.photos.first || self.photos.new
   end
 
   def is_product?
