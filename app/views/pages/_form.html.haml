@@ -1,6 +1,17 @@
 = form_for @page, :url => params[:action] == 'edit' ? page_path(@page.id) : pages_path, :method => params[:action] == 'edit' ? :put : :post, :html => {:multipart => true} do |f|
   %table.alternate.padded#page-table{:style => 'border: 1px solid #999999; width: 600px; margin: 0 auto;'}
     %tr
+      %td.center
+        Should this page be shown in the navigation?
+        %br
+        %br
+        %label{:style => 'margin-right: 50px'}
+          = f.radio_button :show_in_nav, true
+          yes
+        %label
+          = f.radio_button :show_in_nav, false
+          no
+    %tr
       - if !@page.parent_id
         %td.center
           Should this page show in the right-side navigation?
