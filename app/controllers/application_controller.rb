@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   include CustomAuth
   protect_from_forgery
-  before_filter :ensure_domain
-  
+  #before_filter :ensure_domain
+
   private
   APP_DOMAIN = 'www.prodigitalphotos.com'
   def ensure_domain

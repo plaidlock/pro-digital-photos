@@ -11,5 +11,5 @@ output_style = :compressed #:expanded or :nested or :compact or :compressed
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 line_comments = false
 
-css_dir      = 'tmp/stylesheets'
-sass_dir     = 'app/views/stylesheets'
+css_dir = 'tmp/stylesheets'
+sass_dir = 'app/views/stylesheets'
