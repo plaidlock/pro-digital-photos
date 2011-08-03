@@ -3,6 +3,8 @@ class CreatePages < ActiveRecord::Migration
     create_table :pages do |t|
       t.boolean :show_in_nav, :default => true
       t.boolean :right_nav, :default => false
+      t.boolean :is_active, :default => true
+      t.integer :product_id
       t.string :slug
       t.string :title
       t.string :display_name
@@ -12,7 +14,6 @@ class CreatePages < ActiveRecord::Migration
       t.string :change_frequency
       t.float :priority
       t.integer :display_order, :default => 0
-      t.text :dakis_url
 
       t.timestamps
     end

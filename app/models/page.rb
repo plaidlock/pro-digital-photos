@@ -3,19 +3,28 @@ class Page < ActiveRecord::Base
   has_ancestry :cache_depth => true
 
   # associations
-  has_many :photos, :as => :attachable
-  accepts_nested_attributes_for :photos, :allow_destroy => true#, :reject_if => proc{|attributes| attributes['image'].blank? && attributes['alt'].blank?}
+  belongs_to :product
+
+  accepts_nested_attributes_for :product, :reject_if => proc{|attributes| attributes['name'].blank? || attributes['dakis_url'].blank?}
 
   # we can act like wordpress and do some cool stuff too!
-  before_validation :generate_slug, :generate_description, :generate_display_name, :generate_keywords, :generate_change_frequency, :generate_priority
+  before_validation :generate_description, :generate_display_name, :generate_slug, :generate_keywords, :generate_change_frequency, :generate_priority
 
   # validations
   validates :slug, :title, :display_name, :content, :description, :keywords, :presence => true
   validates :slug, :uniqueness => true
 
-  COMMON_WORDS = ["a", "about", "after", "all", "alos", "an", "and", "any", "as", "at", "back", "be", "because", "but", "by", "can", "come", "could", "day", "do", "even", "first", "for", "from", "get", "give", "go", "good", "have", "he", "her", "him", "his", "how", "i", "if", "in", "into", "it", "its", "just", "know", "like", "look", "make", "me", "most", "my", "new", "no", "not", "now", "of", "on", "one", "only", "or", "other", "our", "out", "over", "person", "say", "see", "she", "so", "some", "take", "than", "that", "the", "their", "them", "then", "there", "these", "they", "think", "this", "time", "to", "two", "up", "us", "use", "want", "way", "we", "well", "what", "when", "which", "who", "will", "with", "work", "would", "year", "you", "your", "is"]
+  COMMON_WORDS = ["a", "about", "after", "all", "alos", "are", "an", "and", "any", "as", "at", "back", "be", "because", "but", "by", "can", "come", "could", "day", "do", "even", "first", "for", "from", "get", "give", "go", "good", "have", "he", "her", "him", "his", "how", "i", "if", "in", "into", "it", "its", "just", "know", "like", "look", "make", "me", "most", "my", "new", "no", "not", "now", "of", "on", "one", "only", "or", "other", "our", "out", "over", "person", "say", "see", "she", "so", "some", "take", "than", "that", "the", "their", "them", "then", "there", "these", "they", "think", "this", "time", "to", "two", "up", "us", "use", "want", "way", "we", "well", "what", "when", "which", "who", "will", "with", "work", "would", "year", "you", "your", "is"]
 
   class << self
+    def active
+      self.where(['pages.is_active = ?', true])
+    end
+
+    def inactive
+      self.where(['pages.is_active = ?', false])
+    end
+
     def right_nav
       self.where(['pages.right_nav = ?', true])
     end
@@ -23,18 +32,14 @@ class Page < ActiveRecord::Base
     def left_nav
       self.where(['pages.right_nav = ?', false])
     end
-
-    def product_pages
-      self.where(['dakis_url IS NOT NULL'])
-    end
   end
 
   def primary_photo
     self.photos.first || self.photos.new
   end
 
-  def is_product?
-    !self.dakis_url.nil?
+  def has_product?
+    !self.product.nil?
   end
 
   def to_param
@@ -43,7 +48,7 @@ class Page < ActiveRecord::Base
 
   private
   def generate_slug
-    self.slug = (self.ancestors << self).collect{|a| a.title.parameterize}.join('/')
+    self.slug = (self.ancestors << self).collect{|a| a.display_name.parameterize}.join('/')
     return true
   end
 
@@ -57,6 +62,7 @@ class Page < ActiveRecord::Base
   end
 
   def generate_keywords
+    # remove tags
     freqs = Hash.new(0)
     text = [self.title, self.display_name, self.description, self.content].join(' ')
     words = text.split(/\s/)

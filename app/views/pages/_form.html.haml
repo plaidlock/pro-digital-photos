@@ -2,100 +2,123 @@
   %table.alternate.padded#page-table{:style => 'border: 1px solid #999999; width: 600px; margin: 0 auto;'}
     %tr
       %td.center
-        Should this page be shown in the navigation?
+        Is this page active? (Inactive pages are temporarily deleted)
+        %br
+        %em Making a page inactive also makes all it's subpages inactive.
         %br
         %br
-        %label{:style => 'margin-right: 50px'}
-          = f.radio_button :show_in_nav, true
-          yes
         %label
-          = f.radio_button :show_in_nav, false
-          no
+          = f.check_box :is_active, :tabindex => 1
+          active?
     %tr
-      - if !@page.parent_id
-        %td.center
-          Should this page show in the right-side navigation?
-          %br
-          %br
-          %label{:style => 'margin-right: 50px'}
-            = f.radio_button :right_nav, true
-            yes
-          %label
-            = f.radio_button :right_nav, false
-            no
-      - else
-        %td.center
-          This page will be created in:
-          %br
-          = breadcrumbs(@page)
-          = link_to 'Change', nil, :id => 'change-path-button', :class => 'button'
-          = f.select :parent_id, options_for_select(Page.order(:slug).all.collect{|p| ["#{'&nbsp;-&nbsp;'*p.ancestry_depth} #{p.slug.split('/').last}".html_safe, p.id]}, @page.parent_id), {}, :style => 'display: none', :id => 'change-path-select'
+      %td.center
+        Should this page be shown in navigation?
+        %br
+        %em Pages that aren't in navigation are only accessible via links you create and Google searches.
+        %br
+        %br
+        %label
+          = f.check_box :show_in_nav, :tabindex => 2
+          show in nav?
+    %tr
+      %td.center
+        This page will be created in:
+        %br
+        = breadcrumbs(@page)
+        - unless @page.display_name == 'Home'
+          = link_to 'Change', nil, :id => 'change-path-button', :class => 'button', :tabindex => 3
+          = f.select :parent_id, options_for_select(Page.order(:slug).all.collect{|p| ["#{'&nbsp;-&nbsp;'*p.ancestry_depth} #{p.slug.split('/').last}".html_safe, p.id]}.insert(0,['- [root]', nil]), @page.parent_id), {}, :style => 'display: none', :id => 'change-path-select', :disabled => f.object.display_name == 'Home'
     %tr
       %td
         Title:
         %br
-        = f.text_field :title, :'data-tooltip' => 'Try to make this unique and memorable', :placeholder => 'Page Title', :style => 'width: 250px'
+        = f.text_field :title, :'data-tooltip' => 'Try to make this unique and memorable', :placeholder => 'Page Title', :style => 'width: 250px', :tabindex => 4
     %tr
       %td
         Display Name:
         %br
-        = f.text_field :display_name, :'data-tooltip' => 'The text to display on the link (defaults to title if blank)', :placeholder => 'My Page Title', :style => 'width: 250px'
+        = f.text_field :display_name, :'data-tooltip' => 'The text to display on the link (defaults to title if blank)', :placeholder => 'My Page Title', :style => 'width: 250px', :disabled => f.object.display_name == 'Home', :tabindex => 5
     %tr
       %td
         Description:
         %br
-        = f.text_area :description, :'data-tooltip' => 'Write a 1-2 sentence description of the page', :placeholder => 'This page is about specialized print products and other stuff...', :style => 'width: 550px; height: 100px'
+        = f.text_area :description, :'data-tooltip' => 'Write a 1-2 sentence description of the page', :placeholder => 'This page is about specialized print products and other stuff...', :style => 'width: 550px; height: 100px', :tabindex => 6
     %tr
       %td
         Change Frequency:
         %br
-        = f.select :change_frequency, options_for_select(%w(always hourly daily weekly monthly yearly never), 'weekly'), {}, :'data-tooltip' => 'How often does this page change?'
+        = f.select :change_frequency, options_for_select(%w(always hourly daily weekly monthly yearly never), 'weekly'), {}, :'data-tooltip' => 'How often does this page change?', :tabindex => 7
     %tr
       %td
         Priority:
         %br
-        = f.select :priority, options_for_select((0..10).to_a.collect{|i| i/10.0}, 0.5), {}, :'data-tooltip' => 'How important is this page?'
+        = f.select :priority, options_for_select((0..10).to_a.collect{|i| i/10.0}, 0.5), {}, :'data-tooltip' => 'How important is this page?', :tabindex => 8
     %tr
       %td
-        Content:
+        Page Content:
         %br
-        = link_to 'p', '#', :id => 'insert-paragraph', :class => 'button', :'data-tooltip' => 'Insert a new paragraph', :'data-gravity' => 's'
-        = link_to 'green', '#', :id => 'insert-green-box', :class => 'button', :'data-tooltip' => 'Insert a green callout box', :'data-gravity' => 's'
-        = link_to 'yellow', '#', :id => 'insert-yellow-box', :class => 'button', :'data-tooltip' => 'Insert a yellow callout box', :'data-gravity' => 's'
-        = link_to 'ul', '#', :id => 'insert-ul', :class => 'button', :'data-tooltip' => 'Insert a list of items', :'data-gravity' => 's'
-        = link_to 'a', '#', :id => 'insert-a', :class => 'button', :'data-tooltip' => 'Insert a link', :'data-gravity' => 's'
-        = f.text_area :content, :style => 'width: 550px; height: 500px', :placeholder => '<p>Write your content here...</p>', :id => 'page-content'
-    %tr
+        = link_to 'p', '#', :id => 'insert-paragraph', :class => 'button', :'data-tooltip' => 'Insert a new paragraph', :'data-gravity' => 's', :tabindex => -1
+        = link_to 'green', '#', :id => 'insert-green-box', :class => 'button', :'data-tooltip' => 'Insert a green callout box', :'data-gravity' => 's', :tabindex => -1
+        = link_to 'yellow', '#', :id => 'insert-yellow-box', :class => 'button', :'data-tooltip' => 'Insert a yellow callout box', :'data-gravity' => 's', :tabindex => -1
+        = link_to 'ul', '#', :id => 'insert-ul', :class => 'button', :'data-tooltip' => 'Insert a list of items', :'data-gravity' => 's', :tabindex => -1
+        = link_to 'a', '#', :id => 'insert-a', :class => 'button', :'data-tooltip' => 'Insert a link', :'data-gravity' => 's', :tabindex => -1
+        = f.text_area :content, :style => 'width: 550px; height: 500px', :placeholder => '<p>Write your content here...</p>', :id => 'page-content', :tabindex => 9
+    %tr#attach-product-button-row
       %td.center
-        = link_to 'Attach Product', '#', :class => 'button attach-product'
-    %tr.attach-product-row.none
+        = link_to 'Attach Product', '#', :class => 'button', :id => 'attach-product-button', :tabindex => 10
+    %tr#attach-product-row.none
       %td
-        Dakis URL:
-        %br
-        = f.text_field :dakis_url, :'data-tooltip' => 'Enter the URL that points to the root category of this product', :placeholder => 'http://photominator.dakis.com/?a=12a9d&b=29sl', :style => 'width: 250px'
-    %tr.attach-product-row.none
-      %td.center
-        = link_to 'Add Photo', '#', :class => 'button add-product-photo'
-    = f.fields_for :photos do |ff|
-      %tr.attach-product-row.none
+        - if @page.product.new_record?
+          Existing Product:
+          = f.select :product_id, options_for_select(Product.active.all.collect{|p| [p.name, p.id]}, f.object.product_id), {:include_blank => 'Select a Product...'}, :style => 'margin-right: 15px; width: 352px;', :tabindex => 10
+          = link_to 'New Product', nil, :class => 'button', :id => 'new-product-button', :tabindex => 11
+        - else
+          = f.select :product_id, options_for_select(Product.active.all.collect{|p| [p.name, p.id]}, f.object.product_id), {:include_blank => 'Select a Product...'}, :style => 'margin-right: 15px; width: 415px;', :tabindex => 10
+          = link_to 'X', root_path, :class => 'button', :id => 'remove-product-button', :style => 'margin-right: 15px;', :tabindex => 11
+          = link_to 'Edit Product', nil, :class => 'button', :id => 'edit-product-button', :tabindex => 12
+
+    = f.fields_for :product do |ff|
+      %tr.product-row.none
         %td
-          Image:
+          Product Name:
           %br
-          - if ff.object.image?
-            .float-left
-              = image_tag(ff.object.image.tiny.url)
-              %br
-              %label
-                = ff.check_box :_destroy
-                remove?
-          - else
-            = ff.file_field :image
-            = ff.hidden_field :image_cache
-          = ff.text_field :alt, :placeholder => 'Alternate Text', :style => 'width: 305px'
+          = ff.text_field :name, :'data-tooltip' => 'Name of the product - this is for internal reference only', :placeholder => 'Greeting Card', :style => 'width: 250px', :tabindex => 12
+      %tr.product-row.none
+        %td
+          Dakis URL:
+          %br
+          = ff.text_field :dakis_url, :'data-tooltip' => 'The dakis URL', :placeholder => 'http://photominator.dakis.com/?a=12a9d&b=29sl', :style => 'width: 250px', :tabindex => 13
+      %tr.product-row.none
+        %td
+          Product Content:
+          %br
+          = link_to 'p', '#', :id => 'insert-paragraph', :class => 'button', :'data-tooltip' => 'Insert a new paragraph', :'data-gravity' => 's', :tabindex => -1
+          = link_to 'green', '#', :id => 'insert-green-box', :class => 'button', :'data-tooltip' => 'Insert a green callout box', :'data-gravity' => 's', :tabindex => -1
+          = link_to 'yellow', '#', :id => 'insert-yellow-box', :class => 'button', :'data-tooltip' => 'Insert a yellow callout box', :'data-gravity' => 's', :tabindex => -1
+          = link_to 'ul', '#', :id => 'insert-ul', :class => 'button', :'data-tooltip' => 'Insert a list of items', :'data-gravity' => 's', :tabindex => -1
+          = link_to 'a', '#', :id => 'insert-a', :class => 'button', :'data-tooltip' => 'Insert a link', :'data-gravity' => 's', :tabindex => -1
+          = ff.text_area :content, :style => 'width: 550px; height: 500px', :placeholder => '<p>Write your content here...</p>', :id => 'page-content', :tabindex => 14
+
+          - # need this or else the DOM is fucked up
           = ff.hidden_field :id
 
-  %div{:style => 'margin: 0 auto; width: 604px'}
-    = f.submit :class => 'button', :style => 'width: 604px'
+      - @page.product.photos.each do |photo|
+        %tr.product-row.none
+          %td
+            = link_to photo.image.url, :class => 'fancybox', :rel => 'gallery', :title => photo.alt do
+              = image_tag(photo.image.tiny.url, :height => 50, :width => 50, :class => 'float-left photo', :alt => photo.alt)
+            = text_field_tag "page[product_attributes][photos_attributes][#{photo.id}][alt]", photo.alt, :placeholder => @page.product.name || 'Alt Text', :style => 'margin: 12px 15px 0 150px; width: 250px;'
+            %label
+              = check_box_tag "page[product_attributes][photos_attributes][#{photo.id}][_destroy]"
+              remove
+            = hidden_field_tag "page[product_attributes][photos_attributes][#{photo.id}][id]", photo.id
+
+      %tr#add-photo-row.product-row.none
+        %td.center
+          = link_to 'Add Photo', nil, :id => 'add-photo-button', :class => 'button'
+
+  #page-submit-button{:style => 'margin: 0 auto; width: 604px'}
+    = f.submit :class => 'button', :style => 'width: 604px', :tabindex => 15
 
 :javascript
   $(function() {
@@ -106,106 +129,82 @@
       return false;
     });
 
-    $('.attach-product').click(function() {
-      addProduct();
+    $('#attach-product-button').click(function() {
+      showAttachProduct();
       return false;
     });
 
-    function addProduct() {
-      $('.attach-product').parent().parent().remove();
-      $('.attach-product-row').show();
-    }
-
-    $('.add-product-photo').click(function() {
-      addProductPhoto();
+    $('#new-product-button').click(function() {
+      showProduct();
       return false;
     });
 
-    function addProductPhoto() {
-      var num = new Date().getTime();
-      var tbody = document.getElementById('page-table').children[0];
-      var tr = document.createElement('tr');
-      var td = document.createElement('td');
-      var fileField = document.createElement('input');
-        fileField.type = 'file';
-        fileField.name = 'page[photos_attributes]['+num+'][image]';
-      var altField = document.createElement('input')
-        altField.type = 'text';
-        altField.name = 'page[photos_attributes]['+num+'][alt]';
-        altField.style.width = '305px';
-        altField.placeholder = 'Alternative Text';
-
-      td.innerHTML = 'Image:<br />';
-      td.appendChild(fileField);
-      td.appendChild(altField);
-
-      tr.appendChild(td);
-
-      tbody.appendChild(tr);
-    }
-
-
-    // handle the mini-WYSIWYG
-    var textarea = document.getElementById('page-content');
-
-    $('#insert-paragraph').click(function() {
-      var text = '<p></p>\r\n';
-
-      insertAtCursor(text);
-
-      return false;
-    });
-
-    $('#insert-green-box').click(function() {
-      var text = '<div class="green box">\r\n\t<div class="head">[INSERT TITLE HERE]</div>\r\n\t<div class="body">\r\n\t\t[MAIN BOX CONTENT HERE]\r\n\t</div>\r\n\t<div class="footer"></div>\r\n</div>\r\n';
-
-      insertAtCursor(text);
-
-      return false;
-    });
-
-    $('#insert-yellow-box').click(function() {
-      var text = '<div class="yellow box">\r\n\t<div class="head">[INSERT TITLE HERE]</div>\r\n\t<div class="body">\r\n\t\t[MAIN BOX CONTENT HERE]\r\n\t</div>\r\n\t<div class="footer"></div>\r\n</div>\r\n';
-
-      insertAtCursor(text);
-
-      return false;
-    });
-
-    $('#insert-ul').click(function() {
-      var text = '<ul class="bullets">\r\n\t<li></li>\r\n</ul>\r\n';
-
-      insertAtCursor(text);
-
-      return false;
-    });
-
-    $('#insert-a').click(function() {
-      var text = '<a href="[LINK PATH HERE]">[LINK TEXT HERE]</a>\r\n';
-
-      insertAtCursor(text);
-
-      return false;
-    });
-
-    function insertAtCursor(text) {
-      if(document.selection) {
-        textarea.focus();
-        selection = document.selection.createRange();
-        selection.text = text;
-      } else if(textarea.selectionStart || textarea.selectionStart == '0') {
-        var startPosition = textarea.selectionStart;
-        var endPosition = textarea.selectionEnd;
-        textarea.value = textarea.value.substring(0, startPosition) + text + textarea.value.substring(endPosition, textarea.value.length)
-      } else {
-        textarea.value += text;
+    $('#remove-product-button').click(function() {
+      if(confirm('Are you sure you want to remove the attached product? You must click \'Update Page\' in order to actually remove the product.')) {
+        removeProduct();
       }
+
+      return false;
+    });
+
+    $('#edit-product-button').click(function() {
+      showProduct();
+      return false;
+    });
+
+    $('#add-photo-button').click(function() {
+      addPhoto();
+      return false;
+    });
+
+    function showAttachProduct() {
+      $('#attach-product-button-row').remove();
+      $('#attach-product-row').show();
+    }
+
+    function showProduct() {
+      $('#attach-product-button-row').remove();
+      $('#attach-product-row').remove();
+      $('.product-row').show();
+    }
+
+    function removeProduct() {
+      $('#attach-product-row').remove();
+      $('#product-row').remove();
+      var hidden_product_id = document.createElement('input');
+        hidden_product_id.type = 'hidden';
+        hidden_product_id.name = 'page[product_id]';
+        hidden_product_id.value = 'nil';
+
+      $('#page-submit-button').append(hidden_product_id);
+    }
+
+    function addPhoto() {
+      var time = new Date().getTime();
+      var file_field = document.createElement('input');
+        file_field.type = 'file';
+        file_field.name = 'page[product_attributes][photos_attributes]['+time+'][image]';
+        file_field.style.width = '200px';
+
+      var alt_field = document.createElement('input');
+        alt_field.type = 'text';
+        alt_field.name = 'page[product_attributes][photos_attributes]['+time+'][alt]';
+        alt_field.style.width = '250px';
+        alt_field.style.margin = '0 0 0 10px'
+        alt_field.placeholder = '#{@page.product.name || 'Alt Text'}';
+
+      var tr = document.createElement('tr');
+        tr.className = 'product-row';
+
+        var td = document.createElement('td');
+          td.appendChild(file_field);
+          td.appendChild(alt_field);
+
+        tr.appendChild(td);
+      $('#add-photo-row').before(tr);
+    }
+
+    if(#{!@page.product.nil?}) {
+      showAttachProduct();
     }
   });
-
-- if !@page.dakis_url.nil? || !@page.photos.empty?
-  :javascript
-    $(function() {
-      $('.attach-product').parent().parent().remove();
-      $('.attach-product-row').show();
-    });

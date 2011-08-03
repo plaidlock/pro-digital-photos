@@ -13,7 +13,68 @@ $(function() {
   });
 
   $('.fancybox').fancybox();
+
+  createWYSIWYG();
 });
+
+function createWYSIWYG() {
+    // handle the mini-WYSIWYG
+    var textarea = document.getElementById('page-content');
+
+    $('#insert-paragraph').click(function() {
+      var text = '<p></p>\r\n';
+
+      insertAtCursor(text);
+
+      return false;
+    });
+
+    $('#insert-green-box').click(function() {
+      var text = '<div class="green box">\r\n\t<div class="head">[INSERT TITLE HERE]</div>\r\n\t<div class="body">\r\n\t\t[MAIN BOX CONTENT HERE]\r\n\t</div>\r\n\t<div class="footer"></div>\r\n</div>\r\n';
+
+      insertAtCursor(text);
+
+      return false;
+    });
+
+    $('#insert-yellow-box').click(function() {
+      var text = '<div class="yellow box">\r\n\t<div class="head">[INSERT TITLE HERE]</div>\r\n\t<div class="body">\r\n\t\t[MAIN BOX CONTENT HERE]\r\n\t</div>\r\n\t<div class="footer"></div>\r\n</div>\r\n';
+
+      insertAtCursor(text);
+
+      return false;
+    });
+
+    $('#insert-ul').click(function() {
+      var text = '<ul class="bullets">\r\n\t<li></li>\r\n</ul>\r\n';
+
+      insertAtCursor(text);
+
+      return false;
+    });
+
+    $('#insert-a').click(function() {
+      var text = '<a href="[LINK PATH HERE]">[LINK TEXT HERE]</a>\r\n';
+
+      insertAtCursor(text);
+
+      return false;
+    });
+
+    function insertAtCursor(text) {
+      if(document.selection) {
+        textarea.focus();
+        selection = document.selection.createRange();
+        selection.text = text;
+      } else if(textarea.selectionStart || textarea.selectionStart == '0') {
+        var startPosition = textarea.selectionStart;
+        var endPosition = textarea.selectionEnd;
+        textarea.value = textarea.value.substring(0, startPosition) + text + textarea.value.substring(endPosition, textarea.value.length)
+      } else {
+        textarea.value += text;
+      }
+    }
+}
 
 var sidebarNavigation = {
   _toggle: function(link, animate) {

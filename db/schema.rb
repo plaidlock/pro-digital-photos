@@ -10,11 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110719034259) do
+ActiveRecord::Schema.define(:version => 20110803200549) do
 
   create_table "pages", :force => true do |t|
     t.boolean  "show_in_nav",      :default => true
     t.boolean  "right_nav",        :default => false
+    t.boolean  "is_active",        :default => true
+    t.integer  "product_id"
     t.string   "slug"
     t.string   "title"
     t.string   "display_name"
@@ -24,7 +26,6 @@ ActiveRecord::Schema.define(:version => 20110719034259) do
     t.string   "change_frequency"
     t.float    "priority"
     t.integer  "display_order",    :default => 0
-    t.text     "dakis_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"
@@ -36,12 +37,18 @@ ActiveRecord::Schema.define(:version => 20110719034259) do
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
 
   create_table "photos", :force => true do |t|
-    t.string   "alt"
+    t.integer  "product_id"
     t.string   "image"
-    t.integer  "attachable_id"
-    t.string   "attachable_type"
+    t.string   "alt"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "products", :force => true do |t|
+    t.string  "name"
+    t.string  "dakis_url"
+    t.text    "content"
+    t.boolean "is_active", :default => true
   end
 
   create_table "users", :force => true do |t|

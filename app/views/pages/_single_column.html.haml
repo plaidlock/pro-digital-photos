@@ -1,6 +1,7 @@
 / single column page
 
 %h1= @page.title
-= image_tag(@page.images.first.image.url, :class => 'photo float-right')
-  
+#page-description= @page.description
+.clear
+
 = @page.content.html_safe

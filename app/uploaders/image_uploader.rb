@@ -22,7 +22,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [160, 90]
   end
   version :tiny do
-    process :resize_and_pad => [75, 75]
+    process :resize_and_pad => [50, 50]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

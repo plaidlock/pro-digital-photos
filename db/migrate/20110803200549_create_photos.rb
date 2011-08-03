@@ -1,9 +1,10 @@
 class CreatePhotos < ActiveRecord::Migration
   def self.up
     create_table :photos do |t|
-      t.string :alt
+      t.integer :product_id
       t.string :image
-      t.references :attachable, :polymorphic => true
+      t.string :alt
+
       t.timestamps
     end
   end

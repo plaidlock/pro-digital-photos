@@ -27,6 +27,29 @@ body {
   outline: 0;
 }
 
+strong {
+  font-weight: bold !important;
+}
+
+em {
+  font-style: italic !important;
+}
+
+h1 {
+  color: #666666;
+  display: inline-block;
+  float: left;
+  font-size: 24px;
+  line-height: 26px;
+  margin: 0 0 25px 0;
+  width: 60%;
+}
+
+a {
+  border: none;
+  text-decoration: none;
+}
+
 #header {
   background: url('/images/top-bar.gif') repeat-x top;
   display: block;
@@ -153,16 +176,6 @@ body {
           list-style-type: disc;
           margin: 0 0 15px 0;
         }
-      }
-
-      h1 {
-        color: #666666;
-        display: inline-block;
-        float: left;
-        font-size: 24px;
-        line-height: 26px;
-        margin: 0 0 25px 0;
-        width: 60%;
       }
 
       #page-description {
@@ -311,10 +324,8 @@ ul#sidebar-navigation {
 // Images
 //
 //
-img,  a img {
-  border: 0;
-  color: transparent;
-  outline: 0;
+img {
+  border: none;
   text-decoration: none;
 }
 
@@ -322,7 +333,7 @@ img.photo {
   background: #ffffff;
   border: 1px solid #cccccc;
   @include box-shadow(1px 1px 5px #cccccc);
-  padding: 10px;
+  padding: 1%;
 }
 
 //
@@ -361,9 +372,18 @@ table.alternate {
 // Input Elements
 //
 //
-input[type=text], input[type=password], textarea {
+input[type=text], input[type=password], textarea, select {
   border: 1px solid #aaaaaa;
   padding: 10px;
+}
+
+input[disabled] {
+  background: #eeeeee;
+  font-style: italic;
+}
+
+input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus, a.button:focus {
+  border: 1px solid #666666;
 }
 
 .button {
