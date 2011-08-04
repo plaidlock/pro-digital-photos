@@ -12,4 +12,4 @@ output_style = :compressed #:expanded or :nested or :compact or :compressed
 line_comments = false
 
 css_dir = 'tmp/stylesheets'
-sass_dir = 'app/views/stylesheets'
+sass_dir = 'app/stylesheets'
