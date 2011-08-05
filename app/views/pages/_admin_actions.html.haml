@@ -2,4 +2,5 @@
   / admin actions
   #admin-actions
     = link_to '[Edit]', edit_page_path(:id => @page.id)
-    = link_to "[Create Sub-page]", new_page_path(:parent_id => @page.id)
+    - unless @page.display_name == 'Home'
+      = link_to "[Create Sub-page]", new_page_path(:parent_id => @page.id)
