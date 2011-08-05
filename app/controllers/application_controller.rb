@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   #before_filter :ensure_domain
   layout :process_layout
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to login_path, :notice => 'You must be logged in to perform that action!'
+  end
+
   private
   APP_DOMAIN = 'www.prodigitalphotos.com'
   def ensure_domain

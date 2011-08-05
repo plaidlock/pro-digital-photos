@@ -99,8 +99,12 @@ var sidebarNavigation = {
       var $subNav = $link.parent().children('ul');
       if($subNav.size() !== 0) {
         $link.click(function(e) {
-          sidebarNavigation._toggle(this, true);
-          return false;
+          depth = $link.parents('ul').size();
+          console.log(depth);
+          if(e.offsetX < 10*depth) {
+            sidebarNavigation._toggle(this, true);
+            return false;
+          }
         });
       }
     });
