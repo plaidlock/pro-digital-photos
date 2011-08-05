@@ -290,6 +290,7 @@ ul#sidebar-navigation {
 .product-thumbnails {
   background: $light-light-green;
   border: 1px solid $green;
+  margin: 0 0 20px 0;
   padding: 10px;
 
   .product-thumbnail {
@@ -333,7 +334,14 @@ img.photo {
   background: #ffffff;
   border: 1px solid #cccccc;
   @include box-shadow(1px 1px 5px #cccccc);
-  padding: 1%;
+  @include opacity(0.75);
+  padding: 0.5em;
+  @include transition-property(opacity);
+  @include transition-duration(0.5s);
+
+  &:hover {
+    @include opacity(1.0);
+  }
 }
 
 //

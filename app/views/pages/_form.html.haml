@@ -45,6 +45,19 @@
         = f.text_area :description, :'data-tooltip' => 'Write a 1-2 sentence description of the page', :placeholder => 'This page is about specialized print products and other stuff...', :style => 'width: 550px; height: 100px', :tabindex => 6
     %tr
       %td
+        - if @page.photo.new_record?
+          = file_field_tag 'page[photos_attributes][][image]'
+          = text_field_tag "page[photos_attributes][][alt]", @page.photo.alt, :placeholder => 'Alt Text', :style => 'margin: 0 0 0 10px; width: 250px;'
+        - else
+          = link_to @page.photo.image.url, :class => 'fancybox', :rel => 'gallery', :title => @page.photo.alt do
+            = image_tag(@page.photo.image.tiny.url, :height => 50, :width => 50, :class => 'float-left photo', :alt => @page.photo.alt)
+          = text_field_tag "page[photos_attributes][#{@page.photo.id}][alt]", @page.photo.alt, :placeholder => @page.title || 'Alt Text', :style => 'margin: 12px 15px 0 150px; width: 250px;'
+          %label
+            = check_box_tag "page[photos_attributes][#{@page.photo.id}][_destroy]"
+            remove
+          = hidden_field_tag "page[photos_attributes][#{@page.photo.id}][id]", @page.photo.id
+    %tr
+      %td
         Change Frequency:
         %br
         = f.select :change_frequency, options_for_select(%w(always hourly daily weekly monthly yearly never), 'weekly'), {}, :'data-tooltip' => 'How often does this page change?', :tabindex => 7

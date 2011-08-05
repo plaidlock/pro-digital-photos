@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   # associations
   has_many :pages
-  has_many :photos
+  has_many :photos, :as => :photoable, :dependent => :destroy
 
   accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => proc{|a| a['image'].blank? && a['alt'].blank?}
 

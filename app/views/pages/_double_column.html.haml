@@ -10,29 +10,33 @@
   #page-description= @page.description
   .clear
 
-  - if @page.has_product?
-    .box.green
-      .head= "#{@page.product.name} Images"
-      .body
-        %p{:align => 'center'}
-          - @page.product.photos.each do |photo|
-            = link_to photo.image.url, :class => 'fancybox', :rel => 'gallery', :title => photo.alt do
-              = image_tag photo.image.tiny.url, :alt => photo.alt, :width => 50, :height => 50, :class => 'photo', :style => 'margin-bottom: -20px'
+  - if @page.has_children?
+    .product-thumbnails
+      - @page.children.each do |child|
+        .product-thumbnail
+          .product-content
+            = link_to child.title, slug_path(child), :class => 'product-title'
+            = link_to slug_path(child), :title => child.display_name do
+              = image_tag(child.photo.image.thumb.url, :width => 160, :height => 90, :class => 'photo', :alt => child.display_name)
+      .clear
 
-    = link_to "Order #{@page.product.name} Now", @page.product.dakis_url, :class => 'button', :target => :top, :style => 'width: 580px; margin-bottom: 20px;'
+  - if @page.has_product?
+    - unless @page.product.photos.empty?
+      .box.green
+        .head= "#{@page.product.name} Images"
+        .body
+          %p{:align => 'center'}
+            - @page.product.photos.each do |photo|
+              = link_to photo.image.url, :class => 'fancybox', :rel => 'gallery', :title => photo.alt do
+                = image_tag photo.image.tiny.url, :alt => photo.alt, :width => 50, :height => 50, :class => 'photo', :style => 'margin-bottom: -20px'
+
+    = link_to_product_button(@page.product, :style => 'width: 580px;')
 
     = @page.product.content.html_safe
 
-    = link_to "Order #{@page.product.name} Now", @page.product.dakis_url, :class => 'button', :target => :top, :style => 'width: 580px;'
+    = link_to_product_button(@page.product, :style => 'width: 580px;')
 
-  / - unless @product_pages.empty?
-  /   .product-thumbnails
-  /     - @product_pages.each do |product|
-  /       .product-thumbnail
-  /         .product-content
-  /           = link_to product.title, slug_path(product), :class => 'product-title'
-  /           = link_to slug_path(product), :title => product.display_name do
-  /             = image_tag(product.primary_photo.image.thumb.url, :width => 160, :height => 90, :class => 'photo', :alt => product.display_name)
+
   /     .clear
   / - else
   /   = image_tag(@page.primary_photo.image.url, :class => 'photo')
@@ -40,7 +44,6 @@
   /     = link_to photo.image.url, :class => 'fancybox', :rel => "gallery", :title => photo.alt do
   /       = image_tag(photo.image.tiny.url, :alt => photo.alt || @page.display_name)
 
-  .clear{:style => 'margin: 0 0 10px 0'}
   = @page.content.html_safe
 
 :javascript

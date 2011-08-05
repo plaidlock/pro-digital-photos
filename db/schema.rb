@@ -37,7 +37,8 @@ ActiveRecord::Schema.define(:version => 20110803200549) do
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
 
   create_table "photos", :force => true do |t|
-    t.integer  "product_id"
+    t.integer  "photoable_id"
+    t.string   "photoable_type"
     t.string   "image"
     t.string   "alt"
     t.datetime "created_at"

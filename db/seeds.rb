@@ -5,10 +5,12 @@ cory = User.create!(username:'cory', password:'test', name:'Cory', is_admin:true
 home = Page.new(title:'Home', content:'
 <div class="left float-left">
   <!-- INSERT CONTENT ON THE LEFT SIDE HERE -->
+  Left Side Content
 </div>
 
 <div class="right float-right">
   <!-- INSERT CONTENT ON THE RIGHT SIDER HERE -->
+  Right Side Content
 </div>
 ')
   home.save!

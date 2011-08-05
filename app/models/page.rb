@@ -6,8 +6,10 @@ class Page < ActiveRecord::Base
   has_ancestry :cache_depth => true
 
   # associations
+  has_many :photos, :as => :photoable, :dependent => :destroy
   belongs_to :product
 
+  accepts_nested_attributes_for :photos, :allow_destroy => true#, :reject_if => proc{|a| a['image'].blank? && a['alt'].blank?}
   accepts_nested_attributes_for :product, :reject_if => proc{|attributes| attributes['name'].blank? || attributes['dakis_url'].blank?}
 
   # we can act like wordpress and do some cool stuff too!
@@ -35,7 +37,7 @@ class Page < ActiveRecord::Base
     end
   end
 
-  def primary_photo
+  def photo
     self.photos.first || self.photos.new
   end
 

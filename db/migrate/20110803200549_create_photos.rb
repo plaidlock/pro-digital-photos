@@ -1,7 +1,7 @@
 class CreatePhotos < ActiveRecord::Migration
   def self.up
     create_table :photos do |t|
-      t.integer :product_id
+      t.references :photoable, :polymorphic => true
       t.string :image
       t.string :alt
 
