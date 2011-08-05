@@ -129,3 +129,18 @@ var sidebarNavigation = {
     $('ul#sidebar-navigation, ul#sidebar-navigation * ul').sortable(sortableOpts);
   }
 }
+
+var mainNavigation = {
+  adminFunctions: function(path) {
+    var sortableOpts = {
+      axis: 'x',
+      items: 'li[id]',
+      update: function(event, ui) {
+        var serializedData = $(this).sortable('serialize');
+        $.get(path+'?'+serializedData);
+      }
+    }
+
+    $('ul#main-nav').sortable(sortableOpts);
+  }
+}

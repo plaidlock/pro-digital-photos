@@ -1,7 +1,7 @@
 %ul#main-nav
   / left nav
-  - Page.active.roots.left_nav.each do |page|
-    %li.float-left= link_to page.display_name, slug_path(page), :title => page.display_name
+  - Page.active.roots.left_nav.order(:display_order).each do |page|
+    %li.float-left{:id => "page_#{page.id}"}= link_to page.display_name, slug_path(page), :title => page.display_name
 
   - if can?(:create, Page)
     %li.float-left= link_to '[+ new]', new_page_path
@@ -9,5 +9,11 @@
   / right nav
   - if logged_in?
     %li.float-right= link_to 'Logout', logout_path, :method => :delete
-  - Page.active.roots.right_nav.each do |page|
-    %li.float-right= link_to page.display_name, slug_path(page), :title => page.display_name
+  - Page.active.roots.right_nav.order(:display_order).each do |page|
+    %li.float-right{:id => "page_#{page.id}"}= link_to page.display_name, slug_path(page), :title => page.display_name
+
+- if can?(:manage, @page || Page.new)
+  :javascript
+    $(function() {
+      mainNavigation.adminFunctions('#{sort_pages_path}');
+    });

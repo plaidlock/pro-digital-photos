@@ -36,18 +36,12 @@
 
     = link_to_product_button(@page.product, :style => 'width: 580px;')
 
-
-  /     .clear
-  / - else
-  /   = image_tag(@page.primary_photo.image.url, :class => 'photo')
-  /   - @page.photos.each do |photo|
-  /     = link_to photo.image.url, :class => 'fancybox', :rel => "gallery", :title => photo.alt do
-  /       = image_tag(photo.image.tiny.url, :alt => photo.alt || @page.display_name)
-
   = @page.content.html_safe
 
-:javascript
-  sidebarNavigation.create();
-  if(#{logged_in? && current_user.is_admin?}) {
+- if can?(:manage, Page)
+  :javascript
+    sidebarNavigation.create();
     sidebarNavigation.adminFunctions('#{sort_pages_path}');
-  }
+- else
+  :javascript
+    sidebarNavigation.create();
