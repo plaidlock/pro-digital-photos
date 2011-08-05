@@ -9,7 +9,8 @@ ProDigitalPhotos::Application.routes.draw do
   delete 'logout' => 'sessions#destroy', :as => 'logout'
 
   # sitemap(s)
-  resources :sitemaps, :only => [:show, :index]
+  get 'sitemap' => 'sitemaps#index', :as => 'sitemaps'
+  resources :sitemaps, :only => [:show]
 
   # match all our slugs
   get '*id' => 'pages#show', :as => :slug
