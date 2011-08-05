@@ -4,6 +4,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.string :dakis_url
       t.text :content
+      t.string :keywords
       t.boolean :is_active, :default => true
     end
   end

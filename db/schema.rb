@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20110803200549) do
     t.string  "name"
     t.string  "dakis_url"
     t.text    "content"
+    t.string  "keywords"
     t.boolean "is_active", :default => true
   end
 

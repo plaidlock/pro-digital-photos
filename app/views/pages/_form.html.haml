@@ -57,15 +57,15 @@
       %td
         Page Content:
         %br
-        = link_to 'p', '#', :id => 'insert-paragraph', :class => 'button', :'data-tooltip' => 'Insert a new paragraph', :'data-gravity' => 's', :tabindex => -1
-        = link_to 'green', '#', :id => 'insert-green-box', :class => 'button', :'data-tooltip' => 'Insert a green callout box', :'data-gravity' => 's', :tabindex => -1
-        = link_to 'yellow', '#', :id => 'insert-yellow-box', :class => 'button', :'data-tooltip' => 'Insert a yellow callout box', :'data-gravity' => 's', :tabindex => -1
-        = link_to 'ul', '#', :id => 'insert-ul', :class => 'button', :'data-tooltip' => 'Insert a list of items', :'data-gravity' => 's', :tabindex => -1
-        = link_to 'a', '#', :id => 'insert-a', :class => 'button', :'data-tooltip' => 'Insert a link', :'data-gravity' => 's', :tabindex => -1
-        = f.text_area :content, :style => 'width: 550px; height: 500px', :placeholder => '<p>Write your content here...</p>', :id => 'page-content', :tabindex => 9
+        = link_to 'p', nil, :class => 'button insert-paragraph', :'data-tooltip' => 'Insert a new paragraph', :'data-gravity' => 's', :tabindex => -1
+        = link_to 'green', nil, :class => 'button insert-green-box', :'data-tooltip' => 'Insert a green callout box', :'data-gravity' => 's', :tabindex => -1
+        = link_to 'yellow', nil, :class => 'button insert-yellow-box', :'data-tooltip' => 'Insert a yellow callout box', :'data-gravity' => 's', :tabindex => -1
+        = link_to 'ul', nil, :class => 'button insert-ul', :'data-tooltip' => 'Insert a list of items', :'data-gravity' => 's', :tabindex => -1
+        = link_to 'a', nil, :class => 'button insert-a', :'data-tooltip' => 'Insert a link', :'data-gravity' => 's', :tabindex => -1
+        = f.text_area :content, :style => 'width: 550px; height: 500px', :placeholder => '<p>Write your page content here...</p>', :id => 'page-content', :tabindex => 9
     %tr#attach-product-button-row
       %td.center
-        = link_to 'Attach Product', '#', :class => 'button', :id => 'attach-product-button', :tabindex => 10
+        = link_to 'Attach Product', nil, :class => 'button', :id => 'attach-product-button', :tabindex => 10
     %tr#attach-product-row.none
       %td
         - if @page.product.new_record?
@@ -92,12 +92,12 @@
         %td
           Product Content:
           %br
-          = link_to 'p', '#', :id => 'insert-paragraph', :class => 'button', :'data-tooltip' => 'Insert a new paragraph', :'data-gravity' => 's', :tabindex => -1
-          = link_to 'green', '#', :id => 'insert-green-box', :class => 'button', :'data-tooltip' => 'Insert a green callout box', :'data-gravity' => 's', :tabindex => -1
-          = link_to 'yellow', '#', :id => 'insert-yellow-box', :class => 'button', :'data-tooltip' => 'Insert a yellow callout box', :'data-gravity' => 's', :tabindex => -1
-          = link_to 'ul', '#', :id => 'insert-ul', :class => 'button', :'data-tooltip' => 'Insert a list of items', :'data-gravity' => 's', :tabindex => -1
-          = link_to 'a', '#', :id => 'insert-a', :class => 'button', :'data-tooltip' => 'Insert a link', :'data-gravity' => 's', :tabindex => -1
-          = ff.text_area :content, :style => 'width: 550px; height: 500px', :placeholder => '<p>Write your content here...</p>', :id => 'page-content', :tabindex => 14
+          = link_to 'p', nil, :class => 'button insert-paragraph', :'data-tooltip' => 'Insert a new paragraph', :'data-gravity' => 's', :tabindex => -1
+          = link_to 'green', nil, :class => 'button insert-green-box', :'data-tooltip' => 'Insert a green callout box', :'data-gravity' => 's', :tabindex => -1
+          = link_to 'yellow', nil, :class => 'button insert-yellow-box', :'data-tooltip' => 'Insert a yellow callout box', :'data-gravity' => 's', :tabindex => -1
+          = link_to 'ul', nil, :class => 'button insert-ul', :'data-tooltip' => 'Insert a list of items', :'data-gravity' => 's', :tabindex => -1
+          = link_to 'a', nil, :class => 'button insert-a', :'data-tooltip' => 'Insert a link', :'data-gravity' => 's', :tabindex => -1
+          = ff.text_area :content, :style => 'width: 550px; height: 500px', :placeholder => '<p>Write your product content here...</p>', :id => 'product-content', :tabindex => 14
 
           - # need this or else the DOM is fucked up
           = ff.hidden_field :id

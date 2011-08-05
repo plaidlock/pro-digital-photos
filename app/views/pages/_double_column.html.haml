@@ -11,10 +11,19 @@
   .clear
 
   - if @page.has_product?
-    %p{:align => 'center'}
-      - @page.product.photos.each do |photo|
-        = link_to photo.image.url, :class => 'fancybox', :rel => 'gallery', :title => photo.alt do
-          = image_tag photo.image.tiny.url, :alt => photo.alt, :width => 50, :height => 50, :class => 'photo'
+    .box.green
+      .head= "#{@page.product.name} Images"
+      .body
+        %p{:align => 'center'}
+          - @page.product.photos.each do |photo|
+            = link_to photo.image.url, :class => 'fancybox', :rel => 'gallery', :title => photo.alt do
+              = image_tag photo.image.tiny.url, :alt => photo.alt, :width => 50, :height => 50, :class => 'photo', :style => 'margin-bottom: -20px'
+
+    = link_to "Order #{@page.product.name} Now", @page.product.dakis_url, :class => 'button', :target => :top, :style => 'width: 580px; margin-bottom: 20px;'
+
+    = @page.product.content.html_safe
+
+    = link_to "Order #{@page.product.name} Now", @page.product.dakis_url, :class => 'button', :target => :top, :style => 'width: 580px;'
 
   / - unless @product_pages.empty?
   /   .product-thumbnails

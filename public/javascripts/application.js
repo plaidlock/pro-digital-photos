@@ -1,4 +1,7 @@
 $(function() {
+  createWYSIWYG('page-content');
+  createWYSIWYG('product-content');
+
   $('*[data-tooltip]').tipsy({
     fade: true,
     gravity: function() {
@@ -13,15 +16,13 @@ $(function() {
   });
 
   $('.fancybox').fancybox();
-
-  createWYSIWYG();
 });
 
-function createWYSIWYG() {
+function createWYSIWYG(textareaId) {
     // handle the mini-WYSIWYG
-    var textarea = document.getElementById('page-content');
+    var textarea = document.getElementById(textareaId);
 
-    $('#insert-paragraph').click(function() {
+    $('.insert-paragraph').click(function() {
       var text = '<p></p>\r\n';
 
       insertAtCursor(text);
@@ -29,7 +30,8 @@ function createWYSIWYG() {
       return false;
     });
 
-    $('#insert-green-box').click(function() {
+    $('.insert-green-box').click(function() {
+      console.log('foo');
       var text = '<div class="green box">\r\n\t<div class="head">[INSERT TITLE HERE]</div>\r\n\t<div class="body">\r\n\t\t[MAIN BOX CONTENT HERE]\r\n\t</div>\r\n\t<div class="footer"></div>\r\n</div>\r\n';
 
       insertAtCursor(text);
@@ -37,7 +39,7 @@ function createWYSIWYG() {
       return false;
     });
 
-    $('#insert-yellow-box').click(function() {
+    $('.insert-yellow-box').click(function() {
       var text = '<div class="yellow box">\r\n\t<div class="head">[INSERT TITLE HERE]</div>\r\n\t<div class="body">\r\n\t\t[MAIN BOX CONTENT HERE]\r\n\t</div>\r\n\t<div class="footer"></div>\r\n</div>\r\n';
 
       insertAtCursor(text);
@@ -45,7 +47,7 @@ function createWYSIWYG() {
       return false;
     });
 
-    $('#insert-ul').click(function() {
+    $('.insert-ul').click(function() {
       var text = '<ul class="bullets">\r\n\t<li></li>\r\n</ul>\r\n';
 
       insertAtCursor(text);
@@ -53,7 +55,7 @@ function createWYSIWYG() {
       return false;
     });
 
-    $('#insert-a').click(function() {
+    $('.insert-a').click(function() {
       var text = '<a href="[LINK PATH HERE]">[LINK TEXT HERE]</a>\r\n';
 
       insertAtCursor(text);
