@@ -494,3 +494,11 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus
 .float-left {
   float: left;
 }
+
+//
+//
+// Import stuff
+//
+//
+@import '_fancybox';
+@import '_tipsy';

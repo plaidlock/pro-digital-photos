@@ -7,7 +7,7 @@
     %meta{:name => 'keywords', :content => keywords}
     %meta{:name => 'description', :content => description}
     %link{:rel => 'shortcut icon', :href => '/favicon.ico'}
-    = stylesheet_link_tag %w(screen tipsy fancybox), :media => 'screen, projection'
+    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
