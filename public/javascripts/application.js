@@ -101,7 +101,7 @@ var sidebarNavigation = {
         $link.click(function(e) {
           depth = $link.parents('ul').size();
           console.log(depth);
-          if(e.offsetX < 10*depth) {
+          if(e.offsetX < 15*depth) {
             sidebarNavigation._toggle(this, true);
             return false;
           }
