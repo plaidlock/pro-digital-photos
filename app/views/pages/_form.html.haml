@@ -76,6 +76,14 @@
         = link_to 'ul', nil, :class => 'button insert-ul', :'data-tooltip' => 'Insert a list of items', :'data-gravity' => 's', :tabindex => -1
         = link_to 'a', nil, :class => 'button insert-a', :'data-tooltip' => 'Insert a link', :'data-gravity' => 's', :tabindex => -1
         = f.text_area :content, :style => 'width: 550px; height: 500px', :placeholder => '<p>Write your page content here...</p>', :id => 'page-content', :tabindex => 9
+    %tr
+      %td.center
+        Show content be above or below?
+        %br
+        %br
+        %label
+          = f.check_box :is_content_on_tap, :tabindex => 1
+          show content on top
     %tr#attach-product-button-row
       %td.center
         = link_to 'Attach Product', nil, :class => 'button', :id => 'attach-product-button', :tabindex => 10

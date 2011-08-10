@@ -91,7 +91,7 @@ a {
 }
 
 #wrapper {
-  width: 920px;
+  width: 1024px;
   top: 0;
 
   min-height: 100%;
@@ -110,11 +110,11 @@ a {
       padding: 20px;
 
       .left {
-        width: 250px;
+        width: 240px;
       }
 
       .right {
-        width: 600px;
+        width: 714px;
       }
 
       .box {
@@ -493,6 +493,15 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus
 
 .float-left {
   float: left;
+}
+
+//
+//
+// Labels
+//
+//
+label {
+  white-space: nowrap;
 }
 
 //

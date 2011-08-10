@@ -1,3 +1,4 @@
+- # content above content below
 / double column page
 .left.float-left
   .box.green
@@ -10,6 +11,9 @@
   #page-description= @page.description
   .clear
 
+  - if @page.is_content_on_top?
+    = @page.content.html_safe
+
   - if @page.has_children?
     .product-thumbnails
       - @page.children.each do |child|
@@ -17,7 +21,7 @@
           .product-content
             = link_to child.title, slug_path(child), :class => 'product-title'
             = link_to slug_path(child), :title => child.display_name do
-              = image_tag(child.photo.image.thumb.url, :width => 160, :height => 90, :class => 'photo', :alt => child.display_name)
+              = image_tag(child.photo.image.thumb.url, :width => 180, :height => 180, :class => 'photo', :alt => child.display_name)
       .clear
 
   - if @page.has_product?
@@ -36,7 +40,8 @@
 
     = link_to_product_button(@page.product, :style => 'width: 580px;')
 
-  = @page.content.html_safe
+    - if !@page.is_content_on_top?
+      = @page.content.html_safe
 
 - if can?(:manage, Page)
   :javascript

@@ -19,10 +19,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Create different versions for viewing
   process :resize_to_limit => [800, 800]
   version :thumb do
-    process :resize_to_fill => [160, 90]
+    process :resize_to_fill => [180, 180]
   end
   version :tiny do
-    process :resize_and_pad => [50, 50, '#ffffff']
+    process :resize_and_pad => [180, 180, '#ffffff']
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

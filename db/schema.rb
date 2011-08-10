@@ -13,9 +13,10 @@
 ActiveRecord::Schema.define(:version => 20110803200549) do
 
   create_table "pages", :force => true do |t|
-    t.boolean  "show_in_nav",      :default => true
-    t.boolean  "right_nav",        :default => false
-    t.boolean  "is_active",        :default => true
+    t.boolean  "show_in_nav",       :default => true
+    t.boolean  "right_nav",         :default => false
+    t.boolean  "is_active",         :default => true
+    t.boolean  "is_content_on_tap", :default => true
     t.integer  "product_id"
     t.string   "slug"
     t.string   "title"
@@ -25,11 +26,11 @@ ActiveRecord::Schema.define(:version => 20110803200549) do
     t.text     "content"
     t.string   "change_frequency"
     t.float    "priority"
-    t.integer  "display_order",    :default => 0
+    t.integer  "display_order",     :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"
-    t.integer  "ancestry_depth",   :default => 0
+    t.integer  "ancestry_depth",    :default => 0
   end
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"
