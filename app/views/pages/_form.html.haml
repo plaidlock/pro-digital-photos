@@ -82,14 +82,14 @@
         %br
         %br
         %label
-          = f.check_box :is_content_on_tap, :tabindex => 1
+          = f.check_box :is_content_on_top, :tabindex => 1
           show content on top
     %tr#attach-product-button-row
       %td.center
         = link_to 'Attach Product', nil, :class => 'button', :id => 'attach-product-button', :tabindex => 10
     %tr#attach-product-row.none
       %td
-        - if @page.product.new_record?
+        - if @page.product.nil? || @page.product.new_record?
           Existing Product:
           = f.select :product_id, options_for_select(Product.active.all.collect{|p| [p.name, p.id]}, f.object.product_id), {:include_blank => 'Select a Product...'}, :style => 'margin-right: 15px; width: 352px;', :tabindex => 10
           = link_to 'New Product', nil, :class => 'button', :id => 'new-product-button', :tabindex => 11
@@ -212,7 +212,7 @@
         alt_field.name = 'page[product_attributes][photos_attributes]['+time+'][alt]';
         alt_field.style.width = '250px';
         alt_field.style.margin = '0 0 0 10px'
-        alt_field.placeholder = '#{@page.product.name || 'Alt Text'}';
+        alt_field.placeholder = '#{@page.product.try(:name) || 'Alt Text'}';
 
       var tr = document.createElement('tr');
         tr.className = 'product-row';

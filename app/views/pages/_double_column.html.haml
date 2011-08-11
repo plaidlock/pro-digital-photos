@@ -34,11 +34,9 @@
               = link_to photo.image.url, :class => 'fancybox', :rel => 'gallery', :title => photo.alt do
                 = image_tag photo.image.tiny.url, :alt => photo.alt, :width => 50, :height => 50, :class => 'photo', :style => 'margin-bottom: -20px'
 
-    = link_to_product_button(@page.product, :style => 'width: 580px;')
+    = link_to_product_button(@page.product, :style => 'display: block;')
 
     = @page.product.content.html_safe
-
-    = link_to_product_button(@page.product, :style => 'width: 580px;')
 
     - if !@page.is_content_on_top?
       = @page.content.html_safe

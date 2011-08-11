@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20110803200549) do
     t.boolean  "show_in_nav",       :default => true
     t.boolean  "right_nav",         :default => false
     t.boolean  "is_active",         :default => true
-    t.boolean  "is_content_on_tap", :default => true
+    t.boolean  "is_content_on_top", :default => true
     t.integer  "product_id"
     t.string   "slug"
     t.string   "title"
