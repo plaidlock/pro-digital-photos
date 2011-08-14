@@ -495,6 +495,18 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus, select:focus
   float: left;
 }
 
+ul.row {
+  li {
+    padding: 10px;
+
+    &:hover {
+      background: #eeeeee;
+      border: 1px solid #cccccc;
+      padding: 9px;
+    }
+  }
+}
+
 //
 //
 // Labels

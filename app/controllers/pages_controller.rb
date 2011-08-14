@@ -11,9 +11,13 @@ class PagesController < ApplicationController
   end
 
   def show
-    @page = Page.find_by_slug!(params[:id])
+    @page = Page.active.find_by_slug!(params[:id])
     @root_page = @page.root
     @product_pages = @page.children
+  end
+
+  def hidden
+    @pages = Page.inactive.order('pages.slug')
   end
 
   def new
@@ -42,6 +46,15 @@ class PagesController < ApplicationController
     else
       flash.now[:alert] = @page.errors.full_messages.join('<br />').html_safe
       render :action => 'edit'
+    end
+  end
+
+  def restore
+    if @page.update_attributes(:is_active => true)
+      redirect_to hidden_pages_path, :notice => 'Page was activated!'
+    else
+      flash.now[:alert] = @page.errors.full_messages.join('<br />').html_safe
+      render :action => 'hidden'
     end
   end
 

@@ -1,0 +1,11 @@
+%h1 Hidden Pages
+.clear
+
+- unless @pages.empty?
+  %ul.row
+    - @pages.each do |page|
+      %li
+        #{page.title} &mdash; #{page.slug}
+        .float-right= link_to '[Restore]', restore_page_path(page.id), :confirm => 'Are you sure you want to restore this page?'
+- else
+  %p{:align => 'center'} There are no hidden pages

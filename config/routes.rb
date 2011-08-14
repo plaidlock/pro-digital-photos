@@ -1,6 +1,8 @@
 ProDigitalPhotos::Application.routes.draw do
   resources :pages, :except => [:show] do
     get 'sort', :on => :collection, :as => :sort
+    get 'hidden', :on => :collection, :as => :hidden
+    get 'restore', :on => :member, :as => :restore
   end
 
   # login

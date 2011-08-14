@@ -5,6 +5,7 @@
 
   - if can?(:create, Page)
     %li.float-left= link_to '[+ new]', new_page_path
+    %li.float-left= link_to '[hidden pages]', hidden_pages_path
 
   / right nav
   - if logged_in?
