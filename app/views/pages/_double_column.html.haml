@@ -16,7 +16,7 @@
 
   - if @page.children.active.size > 0
     .product-thumbnails
-      - @page.children.active.each do |child|
+      - @page.children.active.order(:display_order).each do |child|
         .product-thumbnail
           .product-content
             = link_to child.title, slug_path(child), :class => 'product-title'
