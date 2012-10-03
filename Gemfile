@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'activerecord-mysql2-adapter'
 gem 'ancestry'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'cancan'
